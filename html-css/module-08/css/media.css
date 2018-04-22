@@ -1,0 +1,46 @@
+
+  
+  @media (max-width: 599px) {
+    .list li:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (min-width: 600px) and (max-width: 959px) {
+    .list li:nth-child(-n + 2) {
+      margin-bottom: 30px;
+    }
+
+  }
+  
+  @media (min-width: 600px) {
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .list li {
+      flex: 0 0 48%;
+    }
+
+    .masthead-menu{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        margin-bottom: 150px;
+    }
+
+    .menu{
+        margin-bottom: 0;
+    }
+
+  }
+  
+  @media (min-width: 960px) {
+    .list li {
+      flex: 0 0 23%;
+    }
+
+  }
+  

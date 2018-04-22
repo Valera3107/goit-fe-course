@@ -1,0 +1,13 @@
+:root {
+  --list-hover-color: #f38181;
+  --yellow-color: #fce38a;
+  --pale-color: #eaffd0;
+  --logo-color: #95e1d3;
+  --primary-white-color: #ffffff;
+  --primary-dark-color: #333333;
+  --secondary-font-dark-color: #999999;
+  
+  --primary-font-stack: 'Montserrat', sans-serif;
+  --accent-font-stack: 'Kaushan Script', cursive;
+  --secondary--font-stack: 'Roboto', sans-serif;
+}

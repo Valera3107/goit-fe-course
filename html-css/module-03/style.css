@@ -1,0 +1,85 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.content-part{
+    margin: 20px;
+    padding: 10px;
+}
+
+body{
+    background-image: url(background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    background-position: center;
+}
+
+p{
+    margin: 10px;
+    margin-bottom: 10px;
+}
+
+h3{
+    margin: 10px;
+}
+
+img{
+    display: inline-block;
+    width: 400px;
+    margin: auto;
+    margin-left: 9px;
+    text-align: center; 
+}
+
+li{
+    margin: 10px;
+    margin-bottom: 5px;
+    color: rgb(15, 15, 80);
+    font-size: 18px;
+    list-style-type: none;
+}
+
+.wrapper{
+    width: 480px;
+    padding-top: 20px;
+    background-color: white;
+    margin-left: 425px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-position: center;
+}
+
+.line{
+   margin: 10px; 
+   border: none;
+   background-color: rgb(179, 167, 167);
+   height: 1px;
+}
+
+.caption-text{
+    font-weight: bold;
+    margin: 10px;
+    font-size: 18px;
+    color: rgb(6, 6, 73);
+    font-family: 'Arial, Helvetica, sans-serif';
+}
+
+h1{
+    color: rgb(6, 6, 73);
+    font-family: 'Pathway Gothic One';
+    margin: 10px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.menu{
+    color: rgb(15, 15, 80);
+    columns: 2;
+    font-family: 'Pathway Gothic One';
+    text-align: center;
+    margin-bottom: 20px;
+}

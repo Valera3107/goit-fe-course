@@ -1,0 +1,9 @@
+:root{
+  --main-font-family: 'Roboto', sans-serif;
+  --logo-font-family: 'Montserrat', sans-serif;
+
+  --main-background-color: #ffffff;
+  --button-color:#ff4e50;
+  --button-color-hover:#ff0000;
+  --font-inform-color: #989898;
+}

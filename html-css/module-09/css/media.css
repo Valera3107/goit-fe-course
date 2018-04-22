@@ -1,0 +1,43 @@
+
+
+@media (min-width:576px){
+  
+  .masthead-menu{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+}
+
+
+@media (max-width:768px){
+
+  .logo-heard{
+      margin-top: 6.25rem;
+  }
+
+  .masthead{
+   margin-bottom: 1.875rem;
+  }
+}
+
+@media (max-width: 767px) {
+   .team:not(:last-child) {
+     margin-bottom: 1.25rem;
+   }
+ }
+ 
+ @media (min-width: 768px) and (max-width: 967px) {
+   .team:nth-child(-n + 2) {
+     margin-bottom: 1.875rem;
+   }
+
+ }
+
+
+@media (min-width:768px){
+
+   .masthead{
+       margin-bottom: 10rem;
+   }
+}

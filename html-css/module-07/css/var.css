@@ -1,0 +1,10 @@
+:root{
+    --font-yellow-color: #ffd943;
+    --font-white-color: #ffffff;
+    --font-content-color: #777777;
+    --background-placeholder-color: #bbbbbb;
+    --hover-color: #fbc302;
+
+    --main-font-family: 'Roboto', sans-serif;
+    --secondary-font-family: 'Adamina';
+}

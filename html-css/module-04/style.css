@@ -1,0 +1,164 @@
+
+body {
+    counter-reset: count-sidebar-box;
+}
+.wrapper {
+    background-image: url(background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    background-position: center;
+    padding: 20px;
+}
+.container {
+    width: 1100px;
+    margin: auto;
+    background-color: white;
+    padding: 80px 30px;
+    counter-reset: variable; 
+}
+.first-block {
+    border-bottom: 1px solid black;
+}
+.inline {
+    display: inline-block;
+    vertical-align: top;
+}
+.first-main {
+    width: 640px;
+}
+.first-sidebar {
+    width: 340px;
+    margin-left: 50px;
+}
+
+.first-sidebar-item {
+    display: inline-block;
+}
+
+.number::before{
+    content: counter(variable);
+    counter-increment: variable;
+}
+
+.circle-first-sidebar-item{
+    display: inline-block;
+    border: 1px solid #263555;
+    left: -45px;
+    background: #38afe5 ;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 15px;
+    vertical-align: middle;
+    margin: 28px 5px 0 0;
+    float: left;
+}
+
+.wrapper-text{
+    display: inline-block;
+    margin: 10px;
+    width: 250px;
+}
+
+.pict {
+    float: left;
+    margin: 10px 24px 10px 0;
+}
+.title {
+    font-size: 32px;
+    color: #263555;
+    margin-bottom: 48px;
+    font-family: 'Pathway Gothic One';
+}
+.sub-title {
+    font-size: 15px;
+    color: #263555;
+    margin-bottom: 15px;
+}
+.text {
+    font-size: 13px;
+    color: #4e5050;
+}
+.second-main {
+    width: 640px;
+}
+.second-sidebar {
+    width: 260px;
+    margin-left: 50px;
+    text-align: center;
+}
+.first-block, .second-block {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+}
+.second-block:last-child {
+    margin: 0;
+    padding: 0;
+}
+ .second-main-list {
+    display: inline-block;
+    width: 300px;
+    font-size: 15px;
+    list-style: none;
+    vertical-align: top;
+ }
+ 
+.second-main-item {
+    color: #263555;
+    margin: 13px;
+}
+.second-main-item:before {
+    content: "\2192";
+    color: blue;
+} 
+
+.sidebar {
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 35px;
+    padding-right: 35px;
+    margin-left: 35px;
+}
+
+
+.square {
+    width: 212px;
+    background-color: #e9e9e9;
+    border: 1px solid rgba(229, 225, 230, 0.938);
+    border-radius: 2px;
+    padding: 20px;
+    position: relative;
+    margin-left: 10px;
+}
+.square::after {
+    content: ''; 
+    position: absolute; 
+    left: 43%;
+    bottom: -39px; 
+    border: 15px solid transparent; 
+    border-top: 25px solid #e9e9e9; 
+   }
+
+.Mark {
+    background-color: #fff;
+    margin-top: 66px;
+    text-align: center;
+}
+
+.mark-name{
+    color: #263555;
+    font-weight: 800;
+}
+
+.quotes::before {
+    content: "\201C";
+    margin-right: 2px;
+}
+.quotes::after {
+    content: "\201D";
+    margin-left: 2px;
+}
