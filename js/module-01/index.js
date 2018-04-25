@@ -1,4 +1,4 @@
-'use string'
+'use string';
 
 let sharm = 15;
 let hurgada = 25;
@@ -54,9 +54,9 @@ else if(checkAnswer && counterPlace < hurgada){
                 }
             }
         }
-        else
+        else{
             alert('Простите, но туров больше ничего нет.');  
-            
+        }
         break;
 
       case 1:
@@ -72,9 +72,10 @@ else if(checkAnswer && counterPlace < hurgada){
               alert( 'Приятного путешествия в группе \'hurgada\'');
               hurgada-=counterPlace;
             }
-            else
+            else{
               alert('Простите, но больше туров нет.');
-          }
+            }
+            }
         }
         else{
           userChoice = confirm('Увы но в группе \'sharm\'.Вы согласны быть в группе \'hurgada\' ?');
@@ -82,9 +83,10 @@ else if(checkAnswer && counterPlace < hurgada){
               alert( 'Приятного путешествия в группе \'hurgada\'');
               hurgada-=counterPlace;
             }
-            else
+            else{
               alert('Простите, но туров больше ничего нет.');
-        };
+            }
+            };
         break;
 
       case 2: 
@@ -94,9 +96,10 @@ else if(checkAnswer && counterPlace < hurgada){
             alert( 'Приятного путешествия в группе \'hurgada\'');
             hurgada-=counterPlace;
           }
-          else
+          else{
             alert('Простите, но больше туров нет.');
-         }
+          }
+        }
         else{
         alert('Увы но мест в \'hurgada\' нет.');
         };
@@ -105,9 +108,9 @@ else if(checkAnswer && counterPlace < hurgada){
        default: alert('Ошибка. Повторите попытку.');
     }
 }
-else
+else{
  alert('Стольки мест нет.');
-
+}
 
 
 console.log(`Sharm - ${sharm}`);
