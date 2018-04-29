@@ -9,9 +9,7 @@ let count = 3;
 
 
 while(count !== 0){
-  if(count === 3){
   userPassword = prompt('Hello. Input your password:');
-  }
   if(userPassword !== null){
   checkPassword = passwords.includes(userPassword);
     if(checkPassword){
@@ -21,17 +19,15 @@ while(count !== 0){
     else{
       alert('Неверный пароль!');
       count-=1;
-      if(count > 0){
-        alert(`У вас осталось ${count} попытки!`);
-        userPassword = prompt('Input your password:');
-      }
-      else{
-        alert('У вас закончились попытки, аккаунт заблокирован.');
-      }
+        if(count > 0){
+          alert(`У вас осталось ${count} попытки!`);
+        }
+        else{
+          alert('У вас закончились попытки, аккаунт заблокирован.');
+        }
     }
   }
   else{
-    alert('Вы ничего не ввели!');
     break;
   }
 }
