@@ -9,6 +9,7 @@ function checkIfLoginExists(logins, login){
   else{
     loginExists = true;
   }
+  return loginExists;
 }
 
 function checkLoginValidity(login){
@@ -16,7 +17,9 @@ function checkLoginValidity(login){
   let checkLogin;
   newArray = login.split("");
   if(newArray.length > 4 && newArray.length < 16){
-    checkLogin = true;
+    if(checkIfLoginExists(logins, login)){
+      checkLogin = true;
+    }
   }
   else{
     console.log('Логин не валиден');
@@ -26,7 +29,17 @@ function checkLoginValidity(login){
 }
 
 function addLogin(logins, login){
-  
+  if(checkLoginValidity(login)){
+    logins.push(login);
+    console.log('Логин успешно добавлен!');
+  }
+  else{
+    console.log('Такой логин уже используется!');
+  }
+  return logins;
 }
 
 const logins = ["Mango", "robotGoogles", "Poly", "Aj4x1sBozz", "qwerty123"];
+let login = prompt('Введите логин для регистрации:');
+addLogin(logins, login);
+console.log(logins);
