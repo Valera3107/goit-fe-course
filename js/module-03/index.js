@@ -5,6 +5,7 @@ function checkIfLoginExists(logins, login){
   let loginExists;
   if(checkExists){
      loginExists = false;
+     console.log('Такой логин уже используется!');
   }
   else{
     loginExists = true;
@@ -16,14 +17,14 @@ function checkLoginValidity(login){
   let newArray = [];
   let checkLogin;
   newArray = login.split("");
-  if(newArray.length > 4 && newArray.length < 16){
+  if(newArray.length >= 4 && newArray.length <= 16){
     if(checkIfLoginExists(logins, login)){
       checkLogin = true;
     }
   }
   else{
-    console.log('Логин не валиден');
     checkLogin = false;
+    console.log('Ошибка! Логин должен быть от 4 до 16 символов');
   }
   return checkLogin;
 }
@@ -32,9 +33,6 @@ function addLogin(logins, login){
   if(checkLoginValidity(login)){
     logins.push(login);
     console.log('Логин успешно добавлен!');
-  }
-  else{
-    console.log('Такой логин уже используется!');
   }
   return logins;
 }
