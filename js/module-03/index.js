@@ -1,26 +1,13 @@
 'use strict';
 
-function checkIfLoginExists(logins, login){
-  let checkExists = logins.includes(login);
-  let loginExists;
-  if(checkExists){
-     loginExists = false;
-     console.log('Такой логин уже используется!');
-  }
-  else{
-    loginExists = true;
-  }
-  return loginExists;
+function checkIfLoginExists(logins, login){  
+  return  logins.includes(login);
 }
 
 function checkLoginValidity(login){
-  let newArray = [];
   let checkLogin;
-  newArray = login.split("");
-  if(newArray.length >= 4 && newArray.length <= 16){
-    if(checkIfLoginExists(logins, login)){
+  if(login.length >= 4 && login.length <= 16){
       checkLogin = true;
-    }
   }
   else{
     checkLogin = false;
@@ -31,8 +18,13 @@ function checkLoginValidity(login){
 
 function addLogin(logins, login){
   if(checkLoginValidity(login)){
-    logins.push(login);
-    console.log('Логин успешно добавлен!');
+    if(!checkIfLoginExists(logins, login)){
+      logins.push(login);
+      console.log('Логин успешно добавлен!');
+    }
+    else{
+      console.log('Такой логин уже есть!');
+    }
   }
   return logins;
 }
