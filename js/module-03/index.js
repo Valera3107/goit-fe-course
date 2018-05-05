@@ -5,27 +5,23 @@ function checkIfLoginExists(logins, login){
 }
 
 function checkLoginValidity(login){
-  let checkLogin;
-  if(login.length >= 4 && login.length <= 16){
-      checkLogin = true;
-  }
-  else{
-    checkLogin = false;
-    console.log('Ошибка! Логин должен быть от 4 до 16 символов');
-  }
-  return checkLogin;
+  return login.length >= 4 && login.length <= 16;
 }
 
 function addLogin(logins, login){
-  if(checkLoginValidity(login)){
-    if(!checkIfLoginExists(logins, login)){
-      logins.push(login);
-      console.log('Логин успешно добавлен!');
-    }
-    else{
-      console.log('Такой логин уже есть!');
-    }
+  if(!checkLoginValidity(login)){
+    console.log('Такой логин не валиден!');
+    return;
   }
+
+  if(checkIfLoginExists(logins, login)){
+    console.log('Такой логин уже есть!');
+    return;
+  }
+
+  logins.push(login);
+  console.log('Логин успешно добавлен!');
+
   return logins;
 }
 
