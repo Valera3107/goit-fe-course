@@ -20,22 +20,13 @@ function Cashier(name, products) {
   let customerMoney = 0;
 
   this.countTotalPrice = function () {
-    for (const key in products) {
-      if (products.hasOwnProperty(key)) {
-        const productsKeys = key;
-        const productsValues = products[key];
-        for (const key in order) {
-          if (order.hasOwnProperty(key)) {
-            const orderKeys = key;
-            const valueFromOrder = order[key];
-            if (productsKeys === orderKeys) {
-              const summOfCustomerProducts = productsValues * valueFromOrder;
-              totalPrice += summOfCustomerProducts;
-            }
-          }
-        }
-      }
+    const productsList = Object.keys(this.products);
+    const ordersList = Object.keys(order);
+    let getSummOfProducts = 0;
+    for (const product of ordersList) {
+      getSummOfProducts += order[product] * products[product];
     }
+    totalPrice = getSummOfProducts;
     return totalPrice;
   };
 
