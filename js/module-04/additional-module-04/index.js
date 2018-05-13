@@ -7,16 +7,13 @@ const user = {
   hobby: "html",
   premium: true
 };
-
-const userUpdate = {
-  mood: "happy",
-  hobby: "javascript",
-}
+ 
+user.mood = "happy";
+user.hobby = "javascript";
 
 delete user.premium;
 
-const newUser =Object.assign( {},user, userUpdate);
-console.log(newUser);
+console.log(user);
 
 //================(2)
 function isObjectEmpty(obj){
@@ -44,7 +41,9 @@ console.log(
 function countOwnProps(obj){
   let objCount = 0;
   for(const key in obj){
-    objCount+=1;
+    if(obj.hasOwnProperty(key)){
+      objCount+=1;
+    }
   }
   return objCount;
 }
@@ -164,10 +163,11 @@ function Account({ login, password, type = 'regular' }) {
   this.password = password;
   this.type = type;
   
+
   this.changePassword = function (newPassword) {
-    password = newPassword;
+    this.password = newPassword;
     
-    console.log(this.password);
+    console.log(password);
   };
   
   this.getAccountInfo = function() {
@@ -186,7 +186,7 @@ const account = new Account({
 });
 
 console.log( account.login ); // 'Mango'
-console.log( account.password ); // 'qwe123'
+console.log( account.newPassword ); // 'qwe123'
 console.log( account.type ); // 'premium'
 
 console.log( account.changePassword('asdzxc') ); // 'asdzxc'
