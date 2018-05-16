@@ -1,4 +1,4 @@
-'use string';
+'use strict';
 
 let sharm = 15;
 let hurgada = 25;
