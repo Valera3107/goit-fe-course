@@ -1,5 +1,4 @@
 'use strict';
-'use strict';
 
 function SocialBook (users, posts) { 
   this.users = users;
