@@ -4,20 +4,36 @@ function SocialBook (users, posts) {
   this.users = users;
   this.posts = posts;
 
-  this.getAllUsers = () => {return this.users.map(user => user)};
+  this.getAllUsers = () => {return this.users};
+
   this.getUserByLogin = (login) => { return this.users.find(user => user.login === login)};
-  this.getUserStatus = (userId) => { return this.users.find(user => user.id === userId).isActive?'active':'inactive'};
+
+  this.getUserStatus = (userId) => { return this.users.find(user => user.id === userId)
+                                                       .isActive ? 'active' : 'inactive'};
+ 
   this.addUser = (user) => {return this.users.push(user)};
-  this.removeUserById = (userId) => {return this.users.filter(user => user.id !== userId)};
-  this.getUsersCount = () => {return this.users.reduce((acc) => acc + 1, 0) };
 
+  this.removeUserById = (userId) => {
+    const arrOfUsersById = this.users.filter(user => user.id !== userId);
+    return arrOfUsersById};
 
+  this.getUsersCount = () => {return this.users.length };
+
+  //===============
+  
   this.getUserPosts = (userId) => {return this.posts[userId]};
+
   this.addPost = (userId, post) => {return this.posts[userId].push(post)};
-  this.removePost = (userId, postId) => {return this.posts[userId].filter(post => post.id !== postId)};
+
+  this.removePost = (userId, postId) => {
+    const arrOfPostsById = this.posts[userId].filter(post => post.id !== postId);
+    return arrOfPostsById};
+
   this.getAllLikes = (userId) => {return this.posts[userId].reduce((acc, value) => acc + value.likes , 0)};
+  
   this.addPostLike = (userId, postId) => {return this.posts[userId].find(post => post.id === postId).likes + 1};
-  this.getPostsCount = (userId) => {return this.posts[userId].reduce((acc) => acc + 1, 0)};
+  
+  this.getPostsCount = (userId) => {return Object.keys(this.posts).length};
 };
 
  const getId = () => "-" + Math.random().toString(36).substr(2, 9);
@@ -75,6 +91,8 @@ console.log(manager.removeUserById('-qkpzenjxe'));
 console.log(manager.getUsersCount());
 
 //==========================
+console.log("//====================");
+//==========================
 
 console.log(manager.getUserPosts('-qkpzenjxe'));
 
@@ -87,3 +105,5 @@ console.log(manager.getAllLikes('-e51cpd4di'));
 console.log(manager.addPostLike('-e51cpd4di','-i03pbhy3s'));
 
 console.log(manager.getPostsCount('-s19a6hqce'));
+
+console.log(initialPosts);
