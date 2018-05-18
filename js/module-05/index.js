@@ -105,5 +105,3 @@ console.log(manager.getAllLikes('-e51cpd4di'));
 console.log(manager.addPostLike('-e51cpd4di','-i03pbhy3s'));
 
 console.log(manager.getPostsCount('-s19a6hqce'));
-
-console.log(initialPosts);
