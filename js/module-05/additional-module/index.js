@@ -128,10 +128,41 @@ const order = {
 console.log(getAllCosts(order)); // 150
 
 //=============(6)
-//===(???)
+
+const getTotalPrice = (products, order) => {};
+
+
+const products = {
+  bread: 10,
+  milk: 15,
+  apples: 20,
+  cheese: 30,
+  chicken: 40,
+};
+
+const orderA = {
+  bread: 2,
+  apples: 4,
+  chicken: 1,
+};
+
+const orderB = {
+  bread: 1,
+  milk: 2,
+  cheese: 3
+};
+
+
+// Вызовы функции для проверки
+console.log(
+  getTotalPrice(products, orderA)
+); // 140
+
+console.log(
+  getTotalPrice(products, orderB)
+); // 130
 //=========(7)
 const allGuestsActive = (arr) => {
-  // const checkArr = arr.find(user => user.isActive? false : true);
   if(arr.find(user => user.isActive? false : true)){
     return false;
   }
