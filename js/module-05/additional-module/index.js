@@ -128,6 +128,7 @@ const order = {
 console.log(getAllCosts(order)); // 150
 
 //=============(6)
+const isInRange = (products, order) => {};
 
 const getTotalPrice = (products, order) => {};
 
