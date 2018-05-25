@@ -18,17 +18,13 @@
 // maximus.getAccountInfo();
 
 // //===============(2)
-//  function Array(arr) {
-//    this.arr = arr;
-//  };
+Array.prototype.getLast = function(){
+  return this.pop();
+};
 
-//  Array.prototype.getLastElem = function() {
-//    console.log(this.arr.pop());
-//  };
+const numbers = [1, 3, 5];
 
-//   const randomNumbers = new Array([1, 4, 5, 45, 3]);
-
-//  randomNumbers.getLastElem();
+console.log(numbers.getLast());
 
 //  //=============(3)
 //  function Clock(time) {

@@ -45,16 +45,7 @@
 // */
 // function Hamburger({ size, stuffing }) { ... } 
 
-// /* Размеры, виды начинок и добавок добавить как статические свойства класса. К примеру: */
-// Hamburger.SIZE_SMALL = 'SIZE_SMALL';
-// Hamburger.SIZE_LARGE = ...
 
-// Hamburger.SIZES = {
-//   [Hamburger.SIZE_SMALL]: {
-//     price: 30,
-//     calories: 50,
-//   },
-// };
 
 // Hamburger.STUFFING_CHEESE = 'STUFFING_CHEESE';
 // Hamburger.STUFFING_SALAD = ...
@@ -220,12 +211,67 @@
 //   stuffing: Hamburger.TOPPING_SPICE
 // }); 
 // // => HamburgerException: invalid size 'TOPPING_SPICE'
+class Hamburger {
+  constructor(size, stuffing){
+      this.size = size;
+      this.stuffing = stuffing;
+  }
 
-// // добавляем много добавок
-// const h4 = new Hamburger({
-//   size: Hamburger.SIZE_SMALL, 
-//   stuffing: Hamburger.STUFFING_CHEESE
-// });
+   SIZE_SMALL = 'SIZE_SMALL';
+   SIZE_LARGE = 'SIZE_LARGE';
+
+   SIZES = {
+    [Hamburger.SIZE_SMALL]: {
+      price: 30,
+      calories: 50,
+    },
+    [Hamburger.SIZE_LARGE]: {
+      price: 50,
+      calories: 100,
+    },
+  };
+  
+  STUFFING_CHEESE = 'STUFFING_CHEESE';
+  STUFFING_SALAD = 'STUFFING_SALAD';
+  STUFFING_MEAT = 'STUFFING_MEAT';
+  
+  STUFFINGS = {
+  [Hamburger.STUFFING_CHEESE]: {
+    price: 15,
+    calories: 20,
+  },
+  [Hamburger.STUFFING_SALAD]: {
+    price: 20,
+    calories: 5,
+  },
+  [Hamburger.STUFFING_MEAT]: {
+    price: 35,
+    calories: 15,
+  },
+};
+
+TOPPING_SPICE = 'TOPPING_SPICE';
+TOPPING_SAUCE = 'TOPPING_SAUCE';
+
+TOPPINGS = {
+  [Hamburger.TOPPING_SPICE]: {
+    price: 10,
+    calories: 0,
+  },
+  [Hamburger.TOPPING_SAUCE]: {
+    price: 5,
+    calories: 100,
+  }
+};
+
+};
+
+
+// добавляем много добавок
+const h4 = new Hamburger({
+  size: Hamburger.SIZE_SMALL, 
+  stuffing: Hamburger.STUFFING_CHEESE
+});
 				   
-// hamburger.addTopping(Hamburger.TOPPING_SAUCE);
-// hamburger.addTopping(Hamburger.TOPPING_SAUCE); 
+hamburger.addTopping(Hamburger.TOPPING_SAUCE);
+hamburger.addTopping(Hamburger.TOPPING_SAUCE); 
