@@ -29,11 +29,9 @@ class Hamburger {
     this.calculatePrice = function () {
       let totalPrice = 0;
       let totalToppingsPrice = 0;
+      // const getToppingsValuePrice = this.toppings.reduce((accumulator) => {accumulator += Hamburger.TOPPINGS[value].price}, 0);
       const getToppingsValuePrice = this.toppings.filter(value => totalToppingsPrice += Hamburger.TOPPINGS[value].price);
       totalPrice += Hamburger.SIZES[this.size].price + Hamburger.STUFFINGS[this.stuffing].price + totalToppingsPrice;
-
-      // const getToppingsValuePrice = this.toppings.reduce((accumulator, value) => {accumulator += Hamburger.TOPPINGS[value].price}, 0);
-      // totalPrice += Hamburger.SIZES[this.size].price + Hamburger.STUFFINGS[this.stuffing].price + totalToppingsPrice;
 
       return totalPrice;
     };
