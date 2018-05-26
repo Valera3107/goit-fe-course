@@ -52,13 +52,9 @@ class Hamburger {
   };
 
   addTopping = function (topping) {
-    if (this.toppings.length === 0) {
-      return this.toppings.push(topping);
+    if (!this.toppings.includes(topping)) {
+      this.toppings.push(topping);
     }
-
-    return this.toppings.filter(key => key !== topping ? 
-      this.toppings.push(topping) : console.log(`you must add topping which we have`));
-
   }
 
   removeTopping = function (topping) {
@@ -66,7 +62,7 @@ class Hamburger {
       return console.log('Nothing remove, first add you topping');
     }
 
-    return this.toppings = this.toppings.filter(key => key !== topping);
+    this.toppings = this.toppings.filter(key => key !== topping);
   }
 
   getToppings = function () {
@@ -84,6 +80,7 @@ class Hamburger {
   calculatePrice = function () {
     let totalPrice = 0;
     let totalToppingsPrice = 0;
+  //const getToppingsValuePrice = this.toppings.reduce((accumulator, value, ind, arr) => {accumulator += Hamburger.TOPPINGS[value].price}, 0);
     const getToppingsValuePrice = this.toppings.filter(value => totalToppingsPrice += Hamburger.TOPPINGS[value].price);
     totalPrice += Hamburger.SIZES[this.size].price + Hamburger.STUFFINGS[this.stuffing].price + totalToppingsPrice;
 
