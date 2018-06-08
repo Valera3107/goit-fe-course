@@ -1,37 +1,37 @@
 'use strict';
 
 //===========(1)
-const categoryList = document.querySelector("ul");
-let newArr = Array.from(categoryList.children);
-let arrOfIncludes = newArr[0].querySelectorAll('li');
-let arrOfIncludes = newArr.removeAttribute('ul');
-console.log('category: ', categoryList.textContent);
-console.log('length: ', arrOfIncludes.length);
+// const items = document.querySelectorAll('.categories > li');
+
+// items.forEach(item => {console.log('Category: ', item.firstChild);
+// console.log('Quantity: ', item.firstElementChild.children.length);
+// });
+
 
 // =========(2)
 // const getCheckedInputsData = function(inputs){
-//   const arrOfCheckElem = Array.from(inputs);
-//   const checkedElem = arrOfCheckElem.filter(val => val.hasAttribute('checked'));
+//   let propValue = inputs[0].dataset.prop;
 //   let objOfValues = {
 //       values: [],
-//       prop: []
+//       prop: propValue
 //   };
-//   checkedElem.map(val => objOfValues.values.push(val.getAttribute('value')));
-//   checkedElem.find(val => objOfValues.prop.push(val.getAttribute('data-prop')));
-//   console.log(objOfValues);
+//   inputs.map(val => objOfValues.values.push(val.getAttribute('value')));
+//   return objOfValues;
 // }; 
 
-// let categoryListInputs = Array.from(document.querySelectorAll('input'));
-// getCheckedInputsData(categoryListInputs);
+// let categoryListInputs = Array.from(document.querySelectorAll('input[checked]'));
+// console.log(getCheckedInputsData(categoryListInputs));
 
 //==========(3)
 // function makerList(){
 //   let textContent;
 //   do{
 //   textContent = prompt('Input text for item:');
-//   let newItem = document.createElement('li');
-//   newItem.innerHTML = textContent;
-//   elementUl.appendChild(newItem);
+//   if(textContent !== null){
+//     let newItem = document.createElement('li');
+//     newItem.innerHTML = textContent;
+//     elementUl.appendChild(newItem);
+//   }
 //   }while(textContent);
   
 // };
@@ -43,49 +43,99 @@ console.log('length: ', arrOfIncludes.length);
 // list.appendChild(elementUl);
 
 //=======(4)
-// const card = document.querySelector('.post');
+const sectionCard = document.querySelector('#post');
 
-// const createDiv = document.createElement('div');
-// const createImg = document.createElement('img');
-// const createTitle = document.createElement('h2');
-// const createText = document.createElement('p');
-// const createList = document.createElement('ul');
-// const createItem = document.createElement('li');
-// const createButton = document.createElement('button');
-// const createIcon = document.createElement('span');
-// const createCount = document.createElement('span');
+function createPost(){
+const card = document.createElement('div');
+card.classList.add('post');
+
+//====img
+const createImg = document.createElement('img');
+
+createImg.setAttribute('class', 'post__image');
+createImg.setAttribute('src', 'http://via.placeholder.com/400x150');
+createImg.setAttribute('alt', 'post image');
+card.appendChild(createImg);
+
+//====title
+const createTitle = document.createElement('h2');
+createTitle.classList.add('post__title');
+createTitle.textContent = 'Lorem ipsum dolos';
+card.appendChild(createTitle);
+
+//====text
+const createText = document.createElement('p');
+createText.classList.add('post__text');
+createText.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, nemo dignissimos ea temporibus voluptatem maiores maxime consequatur impedit nobis sunt similique voluptas accusamus consequuntur, qui modi nesciunt veritatis distinctio rem!';
+card.appendChild(createText);
+
+//=====List
+const createList = document.createElement('ul');
+createList.classList.add('actions');
+createList.classList.add('post__actions');
+//==li
+const createItemA = document.createElement('li');
+createItemA.classList.add('actions__item');
+
+const createButtonA = document.createElement('button');
+createButtonA.classList.add('actions__btn');
+createItemA.appendChild(createButtonA);
+
+const createIconA = document.createElement('span');
+createIconA.classList.add('actions__icon');
+createIconA.classList.add('actions__icon--like');
+
+const createCountA = document.createElement('span');
+createCountA.classList.add('actions__count');
+createCountA.textContent = '0';
+
+createButtonA.appendChild(createIconA);
+createButtonA.appendChild(createCountA);
+createList.appendChild(createItemA);
+//==
+//==li
+const createItemB = document.createElement('li');
+createItemB.classList.add('actions__item');
+
+const createButtonB = document.createElement('button');
+createButtonB.classList.add('actions__btn');
+createItemB.appendChild(createButtonB);
+
+const createIconB = document.createElement('span');
+createIconB.classList.add('actions__icon');
+createIconB.classList.add('actions__icon--dislike');
+
+const createCountB = document.createElement('span');
+createCountB.classList.add('actions__count');
+createCountB.textContent = '0';
 
 
-// createList.setAttribute('class', 'actions post__actions');
+createButtonB.appendChild(createIconB);
+createButtonB.appendChild(createCountB);
+createList.appendChild(createItemB);
+//==
+//==li
+const createItemC = document.createElement('li');
+createItemC.classList.add('actions__item');
 
-// createDiv.setAttribute('class', 'post');
+const createButtonC = document.createElement('button');
+createButtonC.classList.add('actions__btn');
+createItemC.appendChild(createButtonC);
 
-// createTitle.setAttribute('class', 'post_title');
+const createIconC = document.createElement('span');
+createIconC.classList.add('actions__icon');
+createIconC.classList.add('actions__icon--fav');
 
-// createText.setAttribute('class', 'post_text');
+const createCountC = document.createElement('span');
+createCountC.classList.add('actions__count');
+createCountC.textContent = '0';
 
-// createItem.setAttribute('class', 'actions post__actions');
-
-// createButton.setAttribute('class', 'actions__btn');
-
-// createIcon.setAttribute('class', 'actions__icon actions__icon--like');
-// createCount.setAttribute('class', 'actions__count');
-
-// createImg.setAttribute('class', 'post__image');
-// createImg.setAttribute('src', 'http://via.placeholder.com/400x150');
-// createImg.setAttribute('alt', 'post image');
-
-// createText.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, nemo dignissimos ea temporibus voluptatem maiores maxime consequatur impedit nobis sunt similique voluptas accusamus consequuntur, qui modi nesciunt veritatis distinctio rem!';
-// createTitle.textContent = 'Lorem ipsum dolos';
-// createCount.textContent = '0';
-// createButton.appendChild(createIcon);
-// createButton.appendChild(createCount);
-
-// card.appendChild(createImg);
-// card.appendChild(createTitle);
-// card.appendChild(createText);
-// card.appendChild(createList);
-// card.appendChild(createItem);
-// card.appendChild(createButton);
-// card.appendChild(createIcon);
-// card.appendChild(createCount);
+createButtonC.appendChild(createIconC);
+createButtonC.appendChild(createCountC);
+createList.appendChild(createItemC);
+card.appendChild(createList);
+//==
+//=====
+sectionCard.appendChild(card);
+}
+createPost();
