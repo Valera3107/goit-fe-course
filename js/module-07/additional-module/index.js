@@ -136,6 +136,6 @@ createList.appendChild(createItemC);
 card.appendChild(createList);
 //==
 //=====
-sectionCard.appendChild(card);
+return card;
 }
-createPost();
+sectionCard.appendChild(createPost());
