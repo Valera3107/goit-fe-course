@@ -55,7 +55,6 @@ const posts = [
     }
   }
 ];
-console.log(posts[0].stats.likes);
 
 function createPostCard({img = 'http://...', title = 'Some text ...', text = 'Lorem ...', stats = {likes: 0, dislike: 0, fav: 0}}){
 const card = document.createElement('div');
@@ -105,7 +104,13 @@ function createPostActions(actions){
     
     const createCount = document.createElement('span');
     createCount.classList.add(actions[i].classCount);
-    createCount.textContent = stats[i];
+    if(i === 0){
+      createCount.textContent = stats.likes;
+    }else if(i === 1){
+      createCount.textContent = stats.dislikes;
+    }else{
+    createCount.textContent = stats.fav;
+  }
     
     createButton.appendChild(createIcon);
     createButton.appendChild(createCount);
