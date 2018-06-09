@@ -55,6 +55,32 @@ const posts = [
   }
 ];
 
+function createPostActions(actions, posts, i){  
+
+    const createItem = document.createElement('li');
+    createItem.classList.add(actions[i].classItem);
+    
+    const createButton = document.createElement('button');
+    createButton.classList.add(actions[i].classButton);
+    createItem.appendChild(createButton);
+    
+    const createIcon = document.createElement('span');
+    createIcon.classList.add(actions[i].classIcon);
+    createIcon.classList.add(actions[i].imgIcon);
+    
+    const createCount = document.createElement('span');
+    createCount.classList.add(actions[i].classCount);
+    if(i === 0){
+      createCount.textContent = posts[i].stats.likes;
+    }else if(i === 1){
+      createCount.textContent = posts[i].stats.dislikes;
+    }else{
+    createCount.textContent = posts[i].stats.fav;
+  }
+    createButton.appendChild(createIcon);
+    createButton.appendChild(createCount);
+  return createItem;
+};
 
 
 function createPostCard({img = 'http://...', title = 'Some text ...', text = 'Lorem ...', stats = {likes: 0, dislike: 0, fav: 0}}){
@@ -87,42 +113,14 @@ createList.classList.add('actions');
 createList.classList.add('post__actions');
 
 //==li
-createPostActions(actions);
-function createPostActions(actions){  
-  let arrayOfIcons = [];
-  for(let i = 0; i < actions.length; i+=1){
-    const createItem = document.createElement('li');
-    createItem.classList.add(actions[i].classItem);
-    
-    const createButton = document.createElement('button');
-    createButton.classList.add(actions[i].classButton);
-    createItem.appendChild(createButton);
-    
-    const createIcon = document.createElement('span');
-    createIcon.classList.add(actions[i].classIcon);
-    createIcon.classList.add(actions[i].imgIcon);
-    
-    const createCount = document.createElement('span');
-    createCount.classList.add(actions[i].classCount);
-    if(i === 0){
-      createCount.textContent = stats.likes;
-    }else if(i === 1){
-      createCount.textContent = stats.dislikes;
-    }else{
-    createCount.textContent = stats.fav;
-  }
-    
-    createButton.appendChild(createIcon);
-    createButton.appendChild(createCount);
-    createList.appendChild(createItem);
-  }
-};
+for(let i = 0; i < 3; i+=1 ){
+let createItem = createPostActions(actions, posts, i);
+createList.append(createItem);
+}
 
 card.appendChild(createList);
 return card;
 };
-
-
 
 sectionCard.appendChild(createPostCard(posts[0]));
 sectionCard.appendChild(createPostCard(posts[1]));
