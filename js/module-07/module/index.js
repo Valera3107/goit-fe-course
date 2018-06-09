@@ -2,7 +2,6 @@
 
 const sectionCard = document.querySelector('#post');
 
-
 let actions = [
   {classItem: 'actions__item',
   classButton: 'actions__btn',
@@ -56,6 +55,8 @@ const posts = [
   }
 ];
 
+
+
 function createPostCard({img = 'http://...', title = 'Some text ...', text = 'Lorem ...', stats = {likes: 0, dislike: 0, fav: 0}}){
 const card = document.createElement('div');
 card.classList.add('post');
@@ -84,10 +85,9 @@ card.appendChild(createText);
 const createList = document.createElement('ul');
 createList.classList.add('actions');
 createList.classList.add('post__actions');
+
 //==li
-
 createPostActions(actions);
-
 function createPostActions(actions){  
   let arrayOfIcons = [];
   for(let i = 0; i < actions.length; i+=1){
@@ -117,10 +117,13 @@ function createPostActions(actions){
     createList.appendChild(createItem);
   }
 };
+
 card.appendChild(createList);
 return card;
-}
+};
+
+
+
 sectionCard.appendChild(createPostCard(posts[0]));
 sectionCard.appendChild(createPostCard(posts[1]));
 sectionCard.appendChild(createPostCard(posts[2]));
-
