@@ -45,6 +45,28 @@
 //=======(4)
 const sectionCard = document.querySelector('#post');
 
+
+let actions = [
+  {classItem: 'actions__item',
+  classButton: 'actions__btn',
+  classIcon: 'actions__icon',
+  imgIcon: 'actions__icon--like',
+  classCount: 'actions__count'},
+
+  {classItem: 'actions__item',
+  classButton: 'actions__btn',
+  classIcon: 'actions__icon',
+  imgIcon: 'actions__icon--dislike',
+  classCount: 'actions__count'},
+
+  {classItem: 'actions__item',
+  classButton: 'actions__btn',
+  classIcon: 'actions__icon',
+  imgIcon: 'actions__icon--fav',
+  classCount: 'actions__count'}
+];
+
+
 function createPost(){
 const card = document.createElement('div');
 card.classList.add('post');
@@ -74,65 +96,34 @@ const createList = document.createElement('ul');
 createList.classList.add('actions');
 createList.classList.add('post__actions');
 //==li
-const createItemA = document.createElement('li');
-createItemA.classList.add('actions__item');
 
-const createButtonA = document.createElement('button');
-createButtonA.classList.add('actions__btn');
-createItemA.appendChild(createButtonA);
+createPostActions(actions);
 
-const createIconA = document.createElement('span');
-createIconA.classList.add('actions__icon');
-createIconA.classList.add('actions__icon--like');
-
-const createCountA = document.createElement('span');
-createCountA.classList.add('actions__count');
-createCountA.textContent = '0';
-
-createButtonA.appendChild(createIconA);
-createButtonA.appendChild(createCountA);
-createList.appendChild(createItemA);
-//==
-//==li
-const createItemB = document.createElement('li');
-createItemB.classList.add('actions__item');
-
-const createButtonB = document.createElement('button');
-createButtonB.classList.add('actions__btn');
-createItemB.appendChild(createButtonB);
-
-const createIconB = document.createElement('span');
-createIconB.classList.add('actions__icon');
-createIconB.classList.add('actions__icon--dislike');
-
-const createCountB = document.createElement('span');
-createCountB.classList.add('actions__count');
-createCountB.textContent = '0';
+function createPostActions(actions){  
+  let arrayOfIcons = [];
+  for(let i = 0; i < actions.length; i+=1){
+    const createItem = document.createElement('li');
+    createItem.classList.add(actions[i].classItem);
+    
+    const createButton = document.createElement('button');
+    createButton.classList.add(actions[i].classButton);
+    createItem.appendChild(createButton);
+    
+    const createIcon = document.createElement('span');
+    createIcon.classList.add(actions[i].classIcon);
+    createIcon.classList.add(actions[i].imgIcon);
+    
+    const createCount = document.createElement('span');
+    createCount.classList.add(actions[i].classCount);
+    createCount.textContent = '0';
+    
+    createButton.appendChild(createIcon);
+    createButton.appendChild(createCount);
+    createList.appendChild(createItem);
+  }
+};
 
 
-createButtonB.appendChild(createIconB);
-createButtonB.appendChild(createCountB);
-createList.appendChild(createItemB);
-//==
-//==li
-const createItemC = document.createElement('li');
-createItemC.classList.add('actions__item');
-
-const createButtonC = document.createElement('button');
-createButtonC.classList.add('actions__btn');
-createItemC.appendChild(createButtonC);
-
-const createIconC = document.createElement('span');
-createIconC.classList.add('actions__icon');
-createIconC.classList.add('actions__icon--fav');
-
-const createCountC = document.createElement('span');
-createCountC.classList.add('actions__count');
-createCountC.textContent = '0';
-
-createButtonC.appendChild(createIconC);
-createButtonC.appendChild(createCountC);
-createList.appendChild(createItemC);
 card.appendChild(createList);
 //==
 //=====
