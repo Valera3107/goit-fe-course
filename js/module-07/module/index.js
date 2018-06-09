@@ -1,103 +1,121 @@
 'use strict';
 
-function SocialBook (users, posts) { 
-  this.users = users;
-  this.posts = posts;
+const sectionCard = document.querySelector('#post');
 
-  this.getAllUsers = () => {this.users};
 
-  this.getUserByLogin = (login) => {this.users.find(user => user.login === login)};
+let actions = [
+  {classItem: 'actions__item',
+  classButton: 'actions__btn',
+  classIcon: 'actions__icon',
+  imgIcon: 'actions__icon--like',
+  classCount: 'actions__count'},
 
-  this.getUserStatus = (userId) => {this.users.find(user => user.id === userId)
-                                                       .isActive ? 'active' : 'inactive'};
- 
-  this.addUser = (user) => {this.users.push(user)};
+  {classItem: 'actions__item',
+  classButton: 'actions__btn',
+  classIcon: 'actions__icon',
+  imgIcon: 'actions__icon--dislike',
+  classCount: 'actions__count'},
 
-  this.removeUserById = (userId) => {this.users = this.users.filter(user => user.id !== userId);};
-
-  this.getUsersCount = () => {this.users.length };
-
-  //===============
-  
-  this.getUserPosts = (userId) => {this.posts[userId]};
-
-  this.addPost = (userId, post) => {this.posts[userId].push(post)};
-
-  this.removePost = (userId, postId) => {this.posts = this.posts[userId].filter(post => post.id !== postId)};
-
-  this.getAllLikes = (userId) => {this.posts[userId].reduce((acc, value) => acc + value.likes , 0)};
-  
-  this.addPostLike = (userId, postId) => {this.posts[userId].find(post => post.id === postId).likes + 1};
-  
-  this.getPostsCount = (userId) => {Object.keys(this.posts).length};
-};
-
- const getId = () => "-" + Math.random().toString(36).substr(2, 9);
-
- const initialUsers = [
-  { id: "-s19a6hqce", login: "mangozedog@mail.com", password: "qwe123zv", isActive: true },
-  { id: "-qkpzenjxe", login: "polysweet@skynet.ze", password: "123zxc78", isActive: true },
-  { id: "-e51cpd4di", login: "ajax2k@change.ua", password: "ert234qw", isActive: false },
+  {classItem: 'actions__item',
+  classButton: 'actions__btn',
+  classIcon: 'actions__icon',
+  imgIcon: 'actions__icon--fav',
+  classCount: 'actions__count'}
 ];
 
+const posts = [
+  {
+    img: "https://placeimg.com/400/150/arch",
+    title: "Post title 1",
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, nemo dignissimos ea temporibus voluptatem maiores maxime consequatur impedit nobis sunt similique voluptas accusamus consequuntur, qui modi nesciunt veritatis distinctio rem!",
+    stats: {
+      likes: 6,
+      dislikes: 2,
+      fav: 3
+    }
+  },
+  {
+    img: "https://placeimg.com/400/150/nature",
+    title: "Post title 2",
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, nemo dignissimos ea temporibus voluptatem maiores maxime consequatur impedit nobis sunt similique voluptas accusamus consequuntur, qui modi nesciunt veritatis distinctio rem!",
+    stats: {
+      likes: 124,
+      dislikes: 8,
+      fav: 36
+    }
+  },
+  {
+    img: "https://placeimg.com/400/150/arch",
+    title: "Post title 3",
+    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, nemo dignissimos ea temporibus voluptatem maiores maxime consequatur impedit nobis sunt similique voluptas accusamus consequuntur, qui modi nesciunt veritatis distinctio rem!",
+    stats: {
+      likes: 800,
+      dislikes: 36,
+      fav: 147
+    }
+  }
+];
+console.log(posts[0].stats.likes);
 
-const initialPosts = {
-  "-s19a6hqce": [
-    { id: "-5sgljaskg", text: "post #1", likes: 3 },
-    { id: "-199hb6igr", text: "post #2", likes: 5 },
-    { id: "-hy0eyw5qo", text: "post #3", likes: 13 }
-  ],
-  "-qkpzenjxe": [
-    { id: "-5tu69g5rf", text: "post #1", likes: 8 },
-    { id: "-bje766393", text: "post #2", likes: 15 }
-  ],
-  "-e51cpd4di": [
-    { id: "-9y6nkmlj4", text: "post #1", likes: 18 },
-    { id: "-i03pbhy3s", text: "post #2", likes: 45 }
-  ],
+function createPostCard({img = 'http://...', title = 'Some text ...', text = 'Lorem ...', stats = {likes: 0, dislike: 0, fav: 0}}){
+const card = document.createElement('div');
+card.classList.add('post');
+
+//====img
+const createImg = document.createElement('img');
+
+createImg.setAttribute('class', 'post__image');
+createImg.setAttribute('src', img);
+createImg.setAttribute('alt', 'post image');
+card.appendChild(createImg);
+
+//====title
+const createTitle = document.createElement('h2');
+createTitle.classList.add('post__title');
+createTitle.textContent = title;
+card.appendChild(createTitle);
+
+//====text
+const createText = document.createElement('p');
+createText.classList.add('post__text');
+createText.textContent = text;
+card.appendChild(createText);
+
+//=====List
+const createList = document.createElement('ul');
+createList.classList.add('actions');
+createList.classList.add('post__actions');
+//==li
+
+createPostActions(actions);
+
+function createPostActions(actions){  
+  let arrayOfIcons = [];
+  for(let i = 0; i < actions.length; i+=1){
+    const createItem = document.createElement('li');
+    createItem.classList.add(actions[i].classItem);
+    
+    const createButton = document.createElement('button');
+    createButton.classList.add(actions[i].classButton);
+    createItem.appendChild(createButton);
+    
+    const createIcon = document.createElement('span');
+    createIcon.classList.add(actions[i].classIcon);
+    createIcon.classList.add(actions[i].imgIcon);
+    
+    const createCount = document.createElement('span');
+    createCount.classList.add(actions[i].classCount);
+    createCount.textContent = stats[i];
+    
+    createButton.appendChild(createIcon);
+    createButton.appendChild(createCount);
+    createList.appendChild(createItem);
+  }
 };
+card.appendChild(createList);
+return card;
+}
+sectionCard.appendChild(createPostCard(posts[0]));
+sectionCard.appendChild(createPostCard(posts[1]));
+sectionCard.appendChild(createPostCard(posts[2]));
 
-
-const manager = new SocialBook(initialUsers, initialPosts);
-
-const newUser = {
-  id: getId(), 
-  login: "ukr@net.ua", 
-  password: "qwe1234qwrerty", 
-  isActive: false
-};
-
-const newPost = {
-  id: getId(),
-   text: "post #($)", 
-   likes: 234
-};
-
-console.log(manager.getAllUsers());
-
-console.log(manager.getUserByLogin('polysweet@skynet.ze'));
-
-console.log(manager.getUserStatus('-qkpzenjxe'));
-
-console.log(manager.addUser(newUser));
-console.log(initialUsers);
-
-console.log(manager.removeUserById('-qkpzenjxe'));
-
-console.log(manager.getUsersCount());
-
-//==========================
-console.log("//====================");
-//==========================
-
-console.log(manager.getUserPosts('-qkpzenjxe'));
-
-console.log(manager.addPost('-qkpzenjxe', newPost));
-
-console.log(manager.removePost('-s19a6hqce','-hy0eyw5qo'));
-
-console.log(manager.getAllLikes('-e51cpd4di'));
-
-console.log(manager.addPostLike('-e51cpd4di','-i03pbhy3s'));
-
-console.log(manager.getPostsCount('-s19a6hqce'));
