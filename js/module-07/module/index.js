@@ -120,6 +120,9 @@ card.appendChild(createList);
 return card;
 };
 
-sectionCard.appendChild(createPostCard(posts[0]));
-sectionCard.appendChild(createPostCard(posts[1]));
-sectionCard.appendChild(createPostCard(posts[2]));
+
+function createCards(posts){
+  posts.forEach(post => sectionCard.appendChild(createPostCard(post)));;
+}
+
+createCards(posts);
