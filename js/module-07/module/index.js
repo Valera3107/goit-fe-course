@@ -3,23 +3,17 @@
 const sectionCard = document.querySelector('#post');
 
 let actions = [
-  {classItem: 'actions__item',
-  classButton: 'actions__btn',
-  classIcon: 'actions__icon',
-  imgIcon: 'actions__icon--like',
-  classCount: 'actions__count'},
+  {
+  imgIcon: 'actions__icon--like'
+},
 
-  {classItem: 'actions__item',
-  classButton: 'actions__btn',
-  classIcon: 'actions__icon',
+  {
   imgIcon: 'actions__icon--dislike',
-  classCount: 'actions__count'},
+},
 
-  {classItem: 'actions__item',
-  classButton: 'actions__btn',
-  classIcon: 'actions__icon',
+  {
   imgIcon: 'actions__icon--fav',
-  classCount: 'actions__count'}
+}
 ];
 
 const posts = [
@@ -55,30 +49,26 @@ const posts = [
   }
 ];
 
-function createPostActions(actions, posts, i){  
+function createPostAction(iconClass, count){  
 
     const createItem = document.createElement('li');
-    createItem.classList.add(actions[i].classItem);
+    createItem.classList.add('actions__item');
     
     const createButton = document.createElement('button');
-    createButton.classList.add(actions[i].classButton);
-    createItem.appendChild(createButton);
+    createButton.classList.add('actions__btn');
     
     const createIcon = document.createElement('span');
-    createIcon.classList.add(actions[i].classIcon);
-    createIcon.classList.add(actions[i].imgIcon);
+    createIcon.classList.add('actions__icon');
+    createIcon.classList.add(iconClass);
     
     const createCount = document.createElement('span');
-    createCount.classList.add(actions[i].classCount);
-    if(i === 0){
-      createCount.textContent = posts[i].stats.likes;
-    }else if(i === 1){
-      createCount.textContent = posts[i].stats.dislikes;
-    }else{
-    createCount.textContent = posts[i].stats.fav;
-  }
+    createCount.classList.add('actions__count');
+    createCount.textContent = count;
+   
     createButton.appendChild(createIcon);
     createButton.appendChild(createCount);
+    createItem.appendChild(createButton);
+
   return createItem;
 };
 
@@ -113,10 +103,18 @@ createList.classList.add('actions');
 createList.classList.add('post__actions');
 
 //==li
-for(let i = 0; i < 3; i+=1 ){
-let createItem = createPostActions(actions, posts, i);
-createList.append(createItem);
-}
+const postActionsData = [
+  {iconClass: 'actions__icon--like', count: stats.likes},
+  {iconClass: 'actions__icon--dislike', count: stats.dislikes},
+  {iconClass: 'actions__icon--fav', count: stats.fav}
+];
+
+
+postActionsData.forEach(action => {
+  const elem = createPostAction(action.iconClass, action.count);
+  createList.appendChild(elem);
+})
+
 
 card.appendChild(createList);
 return card;
