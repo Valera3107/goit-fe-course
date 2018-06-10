@@ -132,8 +132,6 @@ sectionCard.innerHTML = card;
 
 
 function createCards(arr) {
-  let elements = '';
-
   return arr.reduce((acc, obj) => acc + createPostCard(obj), '');
 }
 
