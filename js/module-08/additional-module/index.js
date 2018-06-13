@@ -66,24 +66,49 @@ document.addEventListener('DOMContentLoaded', () => {
 // }
 
 // ============(3)
-const menu = document.querySelector('.js-menu');
-const links = menu.querySelectorAll('.menu-link');
-menu.addEventListener('click', handleMenuClick);
+// const menu = document.querySelector('.js-menu');
+// const links = menu.querySelectorAll('.menu-link');
+// menu.addEventListener('click', handleMenuClick);
 
-function handleMenuClick({target}) {
-  const nodeName = target.nodeName;
+// function handleMenuClick({target}) {
+//   const nodeName = target.nodeName;
 
-  event.preventDefault();
+//   event.preventDefault();
 
-  if(nodeName !== 'A') return;
+//   if(nodeName !== 'A') return;
 
-  links.forEach(link => {
-      if(link !== target){
-          link.classList.remove('menu-link-active');
-      } else {
-          link.classList.add('menu-link-active');
-      }
-  });
+//   links.forEach(link => {
+//       if(link !== target){
+//           link.classList.remove('menu-link-active');
+//       } else {
+//           link.classList.add('menu-link-active');
+//       }
+//   });
+// }
 
-}
+// =====================(4)
+  const panels = document.querySelector('.js-tabs__nav');
+
+  const links = document.querySelectorAll('.tabs__link');
+
+  const tabsPane = document.querySelectorAll('.tabs__pane');
+  
+  panels.addEventListener('click', switchPanel);
+
+  function switchPanel({target}) {
+    event.preventDefault();
+    const nodeName = target.nodeName;
+
+    if(nodeName !== 'A') return;
+
+    for(let i = 0; i < 3; i++){
+        if(links[i] !== target){
+            links[i].classList.remove('tabs__link--active');
+            tabsPane[i].classList.remove('tabs__pane--active');
+        } else {
+            links[i].classList.add('tabs__link--active');
+            tabsPane[i].classList.add('tabs__pane--active');
+        }
+    }
+  }
 });
