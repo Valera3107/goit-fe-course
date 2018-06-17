@@ -39,19 +39,11 @@ ul.append(...createGallery(galleryItems));
   list.addEventListener('click', switchImage);
 
   function switchImage({target}) {
-   console.log(target);
-    const max = images.length;
-    event.preventDefault();
     const nodeName = target.nodeName;
-    
+
     if(nodeName !== 'IMG') return;
-    
-    for(let i = 0; i < max; i++){
-        if(images[i] === target){
-            let attribute =  images[i].dataset.fullview;
-            console.log(attribute);
-            fullviewImage.setAttribute('src', attribute);   
-        } 
-      }
+ 
+    let attribute =  target.dataset.fullview;
+    fullviewImage.setAttribute('src', attribute);     
   }
 });
