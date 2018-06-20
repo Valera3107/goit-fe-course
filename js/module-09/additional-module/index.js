@@ -30,45 +30,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.querySelector(".js-timer-start");
     const stopBtn = document.querySelector(".js-timer-stop");
 
+
     const timer = {
         startTime: null,
         deltaTime: null,
-        id: null
+        id: null,
+        isActive: false,
+        startTimer() {
+          if(!this.isActive){
+          this.startTime = Date.now();
+          this.isActive = true;
+          this.id = setInterval(()=>{
+          const currentTime = Date.now();
+          this.deltaTime = currentTime - this.startTime;
+          const time = new Date(this.deltaTime);
+          const min = time.getMinutes();
+          const sec = time.getSeconds();
+          const ms = Number.parseInt((time.getMilliseconds())/100);
+          updateClockface(clockface, {min, sec, ms});
+          }, 100);
+          }
+        },
+        stopTimer() {
+          this.isActive = false;
+          clearInterval(this.id);  
+          this.id = null;
+          this.startTime = null;
+          this.deltaTime = null; 
+          updateClockface(clockface, {min: 0, sec: 0, ms: 0});
+        }
     };
-
-
-
-    startBtn.addEventListener('click', startTimer);
-    stopBtn.addEventListener('click', stopTimer);
-
-    function startTimer({timer}) {
-      let min;
-      let sec;
-      let ms;
-      setInterval(()=>{
-      const currentTime = Date.now();
-      deltaTime = startTime - currentTime;
-      let date = Date.now(deltaTime);
-      min = date.getMinutes();
-      sec = date.getSeconds();
-      ms = Number.parseInt((date.getMilliseconds())/1000);
-      updateClockface(clockface,(getFormattedTime({min, sec, ms})));
-      },100);
-
-    }
-
-    function stopTimer() {}
-    
+  
     function getFormattedTime({min, sec, ms}) {
-        return `${min}:${sec}.${ms}`;
+      if(min < 10 && sec < 10){
+        return `0${min}:0${sec}.${ms}`;
+      }
+
+      if(min < 10){
+        return `0${min}:${sec}.${ms}`;
+      }
     }
- 
    
     function updateClockface(elem, time) {
       elem.textContent = getFormattedTime(time);
     }
 
-    function setActiveBtn(target) {
+    function setActiveBtn({target}) {
       if(target.classList.contains('active')) {
         return;
       }
@@ -79,5 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
       target.classList.add('active');
     }
 
+    startBtn.addEventListener('click', timer.startTimer.bind(timer));
+    stopBtn.addEventListener('click', timer.stopTimer.bind(timer));
+
+    startBtn.addEventListener('click', setActiveBtn);
+    stopBtn.addEventListener('click', setActiveBtn);
 
 });
