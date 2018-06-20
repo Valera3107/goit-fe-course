@@ -44,10 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const currentTime = Date.now();
           this.deltaTime = currentTime - this.startTime;
           const time = new Date(this.deltaTime);
-          const min = time.getMinutes();
-          const sec = time.getSeconds();
-          const ms = Number.parseInt((time.getMilliseconds())/100);
-          updateClockface(clockface, {min, sec, ms});
+          updateClockface(clockface, time);
           }, 100);
           }
         },
@@ -57,11 +54,15 @@ document.addEventListener('DOMContentLoaded', () => {
           this.id = null;
           this.startTime = null;
           this.deltaTime = null; 
-          updateClockface(clockface, {min: 0, sec: 0, ms: 0});
+          const time = new Date(this.deltaTime);
+          updateClockface(clockface, time);
         }
     };
   
-    function getFormattedTime({min, sec, ms}) {
+    function getFormattedTime(time) {
+      const min = time.getMinutes();
+      const sec = time.getSeconds();
+      const ms = Number.parseInt((time.getMilliseconds())/100);
       if(min < 10 && sec < 10){
         return `0${min}:0${sec}.${ms}`;
       }
