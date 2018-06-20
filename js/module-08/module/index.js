@@ -13,12 +13,18 @@ const galleryItems = [
   { preview: 'img/town-p.jpeg', fullview: 'img/town-f.jpeg', alt: "town"},
 ];
 
+function addAction({target}) {
+  return target.classList.add('action');
+}
+
 function createGallery(arr) {
   let arrOfImage = [];
   const lengthOfArr = arr.length;
     for(let i = 0; i < lengthOfArr; i+=1){
       let item = document.createElement('li');
       let image = document.createElement('img');
+      image.addEventListener('click', addAction);
+      image.setAttribute('class', 'js-image');
       image.setAttribute('src', arr[i].preview);
       image.setAttribute('data-fullview', arr[i].fullview);
       image.setAttribute('alt', arr[i].alt);

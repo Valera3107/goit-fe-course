@@ -32,7 +32,7 @@ li > img{
     width: 206px;
 }
 
-li > img:hover{
+.action{
     transition-duration: 1.5s;
     filter: grayscale(0%);
 }
