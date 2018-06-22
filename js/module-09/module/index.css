@@ -26,7 +26,8 @@ body {
 }
 
 .btn {
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
   display: block;
   width: 220px;
   text-transform: uppercase;
@@ -38,6 +39,10 @@ body {
   font-size: 28px;
   border-radius: 2px;
   font-family: "Roboto", sans-serif;
+}
+
+.start{
+  margin-bottom: 10px;
 }
 
 .active {
