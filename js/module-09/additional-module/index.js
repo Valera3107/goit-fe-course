@@ -129,14 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const processOrder = amount => {
       return new Promise((resolve, reject)=>{
         setTimeout(()=>{
-          if(!Number.isNaN(amount)){
-            if(goodsAmount < amount){
-              resolve(' К сожалению на складе недостаточно товаров!');
-            }
+          if(goodsAmount >= amount && !Number.isNaN(amount)){
             goodsAmount -= amount;
             resolve('Ваш заказ готов!');
           }
 
+          if(!Number.isNaN(amount) && goodsAmount < amount){
+              resolve('К сожалению на складе недостаточно товаров!');
+            }
+                      
             reject('Некоректный ввод!');
           
         }, DELAY / 2)
