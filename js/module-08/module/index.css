@@ -33,7 +33,7 @@ li > img{
 }
 
 .action{
-    transition-duration: 1.5s;
+    transition-duration: 1s;
     filter: grayscale(0%);
 }
 

@@ -101,10 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
       let isPause = false;
       let fixedTime = null;
       let maxLap = 0;
-      let toggleButton = false;
-
 
     function startTimer(){
+      isPause = false;
       countClick += 1;
         if(countClick < 4){
           if(!isActive && countClick === 1){
@@ -143,9 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-
     function continueTimer(){
       isPause = false;
+      if(!isPause){
+        resetBtn.textContent = 'reset';
+        resetBtn.addEventListener('click', resetTimer);
+      }
       id = setInterval(()=>{
           const currentTime = Date.now();
           deltaTime = currentTime - startTime;
@@ -155,21 +157,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function makeLap() {
-      if(maxLap < 10 && !toggleButton){
+      if(maxLap < 10){
         maxLap += 1;
         isPause = false; 
-        toggleButton = true;
         const li = document.createElement('li');
         li.textContent = getFormattedTime(fixedTime);
         list.appendChild(li);
-        resetBtn.textContent = 'reset';
-        resetBtn.addEventListener('click',resetTimer);
       }
     }
 
     function resetTimer(){
-      if(!isPause && toggleButton){
-        toggleButton = false;
         countClick = 0;
         clearInterval(id);
         startBtn.textContent = 'start';
@@ -179,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
         deltaTime = null;
         time = new Date(deltaTime);
         updateClockface(clockface, time);
-      }
     };
 
     

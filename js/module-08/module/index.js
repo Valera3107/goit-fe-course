@@ -14,6 +14,9 @@ const galleryItems = [
 ];
 
 function addAction({target}) {
+   images.forEach(img => {
+      img.classList.remove('action');
+    });
   return target.classList.add('action');
 }
 
@@ -37,14 +40,13 @@ function createGallery(arr) {
 ul.append(...createGallery(galleryItems));
 
   const list = document.querySelector('.js-preview');
-
   const images = document.querySelectorAll('ul > li > img');
- 
   const fullviewImage = document.querySelector('.js-fullview > img');
 
   list.addEventListener('click', switchImage);
 
   function switchImage({target}) {
+
     const nodeName = target.nodeName;
 
     if(nodeName !== 'IMG') return;
