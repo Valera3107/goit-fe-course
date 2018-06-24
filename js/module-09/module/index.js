@@ -7,92 +7,90 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetBtn = document.querySelector(".js-reset");
     const list = document.querySelector('.js-laps');
 
-   
-    let isActive = false;
-    let isPause = false;
-    let isContinue = false;
-    let isReset = false;
-    let startTime = null;
-    let id = null;
-    let deltaTime = null;
-    let time = null;
-    let fixedTime = null;
-    let arrOfLaps = [];
-    let maxLap = 10;
-    let countLap = 0;
-
-
-      function startTimer(){
-        isReset = false;
-            if(!isActive){
-               isActive = true;
+    const timer = {
+      isActive: false,
+      isPause: false,
+      isContinue: false,
+      isReset: false,
+      startTime: null,
+      id: null,
+      deltaTime: null,
+      time: null,
+      fixedTime: null,
+      arrOfLaps: [],
+      maxLap: 10,
+      countLap: 0,
+      
+      startTimer(){
+        this.isReset = false;
+            if(!this.isActive){
+               this.isActive = true;
                startBtn.textContent = 'Pause';
-               startTime = Date.now();
-                id = setInterval(()=>{
+               this.startTime = Date.now();
+                this.id = setInterval(()=>{
                     const currentTime = Date.now();
-                    deltaTime = currentTime - startTime;
-                    time = new Date(deltaTime);
-                    updateClockface(clockface, time);
+                    this.deltaTime = currentTime - this.startTime;
+                    this.time = new Date(this.deltaTime);
+                    updateClockface(clockface, this.time);
                 }, 100);
             } else {
-              if(!isPause){
-                isContinue = false;
-                isPause = true;
-                fixedTime = time;
+              if(!this.isPause){
+                this.isContinue = false;
+                this.isPause = true;
+                this.fixedTime = this.time;
                 resetBtn.textContent = 'lap';
                 startBtn.textContent = 'Continue';
-                clearInterval(id);
-                updateClockface(clockface, fixedTime);
+                clearInterval(this.id);
+                updateClockface(clockface, this.fixedTime);
               } else {
-                isContinue = true;
+                this.isContinue = true;
                 resetBtn.textContent = 'reset';
                 startBtn.textContent = 'Pause';
-                startTime = Date.now();
-                startTime -= fixedTime;
-                isPause = false;
-                  id = setInterval(()=>{
+                this.startTime = Date.now();
+                this.startTime -= this.fixedTime;
+                this.isPause = false;
+                  this.id = setInterval(()=>{
                       const currentTime = Date.now();
-                      deltaTime = currentTime - startTime;
-                      time = new Date(deltaTime);
-                      updateClockface(clockface, time);
+                      this.deltaTime = currentTime - this.startTime;
+                      this.time = new Date(this.deltaTime);
+                      updateClockface(clockface, this.time);
                   }, 100);
               }
             }
-      };
-
-      function resetTimer(){
-        if(isContinue){
-          isReset = true;
-          clearInterval(id);
+      },
+      resetTimer(){
+        if(this.isContinue){
+          this.isReset = true;
+          clearInterval(this.id);
           startBtn.textContent = 'start';
-          isPause = false;
-          isContinue = false;
-          isActive = false;
-          id = null;
-          startTime = null;
-          deltaTime = null;
+          this.isPause = false;
+          this.isContinue = false;
+          this.isActive = false;
+          this.id = null;
+          this.startTime = null;
+          this.deltaTime = null;
           const items = document.querySelectorAll('li');
           items.forEach(item => {
             item.remove();
           });
-          time = new Date(deltaTime);
-          updateClockface(clockface, time);
+          this.time = new Date(this.deltaTime);
+          updateClockface(clockface, this.time);
         } 
 
-        if(!isContinue && !isReset){
-          if(countLap < maxLap){
-            countLap += 1;
+        if(!this.isContinue && !this.isReset){
+          if(this.countLap < this.maxLap){
+            this.countLap += 1;
             const li = document.createElement('li');
-            li.textContent = getFormattedTime(fixedTime);
+            li.textContent = getFormattedTime(this.fixedTime);
             list.appendChild(li);
-            isContinue = true;
+            this.isContinue = true;
             resetBtn.textContent = 'reset';
           } 
         }
-    };
-
+    }
+  }
     
-  
+
     function getFormattedTime(time) {
       const min = time.getMinutes();
       const sec = time.getSeconds();
@@ -121,11 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
       target.classList.add('active');
     }
 
-    startBtn.addEventListener('click', startTimer);
-    resetBtn.addEventListener('click', resetTimer);
 
-    // startBtn.addEventListener('click', timer.startTimer.bind(timer));
-    // resetBtn.addEventListener('click', timer.resetTimer.bind(timer));
+    startBtn.addEventListener('click', timer.startTimer.bind(timer));
+    resetBtn.addEventListener('click', timer.resetTimer.bind(timer));
 
 
     startBtn.addEventListener('click', setActiveBtn);
