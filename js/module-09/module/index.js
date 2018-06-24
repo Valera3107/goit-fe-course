@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
           this.id = null;
           this.startTime = null;
           this.deltaTime = null;
+          this.countLap = 0;
           const items = document.querySelectorAll('li');
           items.forEach(item => {
             item.remove();
