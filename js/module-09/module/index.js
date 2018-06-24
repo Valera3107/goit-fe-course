@@ -24,39 +24,43 @@ document.addEventListener('DOMContentLoaded', () => {
         this.isReset = false;
             if(!this.isActive){
                this.isActive = true;
-               startBtn.textContent = 'Pause';
                this.startTime = Date.now();
-                this.id = setInterval(()=>{
-                    const currentTime = Date.now();
-                    this.deltaTime = currentTime - this.startTime;
-                    this.time = new Date(this.deltaTime);
-                    updateClockface(clockface, this.time);
-                }, 100);
+               this.continueTimer();
             } else {
               if(!this.isPause){
-                this.isContinue = false;
-                this.isPause = true;
-                this.fixedTime = this.time;
-                resetBtn.textContent = 'lap';
-                startBtn.textContent = 'Continue';
-                clearInterval(this.id);
-                updateClockface(clockface, this.fixedTime);
+                this.pauseTimer();
               } else {
                 this.isContinue = true;
                 resetBtn.textContent = 'reset';
-                startBtn.textContent = 'Pause';
                 this.startTime = Date.now();
                 this.startTime -= this.fixedTime;
                 this.isPause = false;
-                  this.id = setInterval(()=>{
-                      const currentTime = Date.now();
-                      this.deltaTime = currentTime - this.startTime;
-                      this.time = new Date(this.deltaTime);
-                      updateClockface(clockface, this.time);
-                  }, 100);
+                this.continueTimer();
               }
             }
       },
+
+      pauseTimer(){
+        this.isContinue = false;
+        this.isPause = true;
+        this.fixedTime = this.time;
+        resetBtn.textContent = 'lap';
+        startBtn.textContent = 'Continue';
+        clearInterval(this.id);
+        updateClockface(clockface, this.fixedTime);
+      },
+      
+      continueTimer(){
+        startBtn.textContent = 'Pause';
+        this.id = setInterval(()=>{
+          const currentTime = Date.now();
+          this.deltaTime = currentTime - this.startTime;
+          this.time = new Date(this.deltaTime);
+          updateClockface(clockface, this.time);
+      }, 100);
+      },
+
+
       resetTimer(){
         if(this.isContinue){
           this.isReset = true;
@@ -69,24 +73,32 @@ document.addEventListener('DOMContentLoaded', () => {
           this.startTime = null;
           this.deltaTime = null;
           this.countLap = 0;
-          const items = document.querySelectorAll('li');
-          items.forEach(item => {
-            item.remove();
-          });
+          this.deleteItems();
           this.time = new Date(this.deltaTime);
           updateClockface(clockface, this.time);
         } 
 
         if(!this.isContinue && !this.isReset){
           if(this.countLap < this.maxLap){
-            this.countLap += 1;
-            const li = document.createElement('li');
-            li.textContent = getFormattedTime(this.fixedTime);
-            list.appendChild(li);
-            this.isContinue = true;
-            resetBtn.textContent = 'reset';
+            this.makeLap();
           } 
         }
+    },
+
+    deleteItems(){
+      const items = document.querySelectorAll('li');
+      items.forEach(item => {
+        item.remove();
+      });
+    },
+
+    makeLap(){
+      this.countLap += 1;
+      const li = document.createElement('li');
+      li.textContent = getFormattedTime(this.fixedTime);
+      list.appendChild(li);
+      this.isContinue = true;
+      resetBtn.textContent = 'reset';
     }
   }
     
