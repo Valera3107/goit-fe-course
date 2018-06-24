@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.querySelector(".js-start");
     const resetBtn = document.querySelector(".js-reset");
     const list = document.querySelector('.js-laps');
-    const items = document.querySelectorAll('li');
 
    
     let isActive = false;
@@ -24,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
       function startTimer(){
+        isReset = false;
             if(!isActive){
                isActive = true;
                startBtn.textContent = 'Pause';
@@ -67,11 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
           startBtn.textContent = 'start';
           isPause = false;
           isContinue = false;
-          isReset = false;
           isActive = false;
           id = null;
           startTime = null;
           deltaTime = null;
+          const items = document.querySelectorAll('li');
+          items.forEach(item => {
+            item.remove();
+          });
           time = new Date(deltaTime);
           updateClockface(clockface, time);
         } 
