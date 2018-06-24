@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetBtn = document.querySelector(".js-reset");
     const list = document.querySelector('.js-laps');
 
+    // object timer
+    
     const timer = {
       isActive: false,
       isPause: false,
@@ -100,9 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
       this.isContinue = true;
       resetBtn.textContent = 'reset';
     }
-  }
+  };
     
-
+    //additional functions 
     function getFormattedTime(time) {
       const min = time.getMinutes();
       const sec = time.getSeconds();
@@ -132,9 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // Buttons
     startBtn.addEventListener('click', timer.startTimer.bind(timer));
     resetBtn.addEventListener('click', timer.resetTimer.bind(timer));
-
 
     startBtn.addEventListener('click', setActiveBtn);
     resetBtn.addEventListener('click', setActiveBtn);
