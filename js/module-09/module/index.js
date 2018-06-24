@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
       deltaTime: null,
       time: null,
       fixedTime: null,
-      arrOfLaps: [],
       maxLap: 10,
       countLap: 0,
       
