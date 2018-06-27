@@ -150,14 +150,29 @@ postBtn.addEventListener("click", getUserByName);
 
 function getUserByName(evt) {
   evt.preventDefault();
+
   fetch('https://test-users-api.herokuapp.com/users/')
   .then(res=>{
-    console.log(res);
-    if(res.ok === 200) return res.json();
+    if(res.ok) return res.json();
+
+    throw new Error(`Error: ${res.statusText}`)
   })
   .then(data=>{
-    console.log((data));
+    findUserInform(data.data, input.value);
   })
+  .catch(err => {
+    console.log(err);
+  })
+}
+
+function findUserInform(arr, name) {
+  let userInfo = document.createElement('p');
+  arr.forEach(element => {
+    if(element.name === name){
+      userInfo.textContent = `id: ${element.id}; name: ${element.name}; age: ${element.age}`;
+      result.appendChild(userInfo);
+    }
+  });  
 }
 
 });
