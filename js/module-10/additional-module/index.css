@@ -1,4 +1,4 @@
-body {
+/* body {
   font-family: "Roboto", sans-serif;
   background: #fff;
 }
@@ -56,17 +56,244 @@ body {
   color: #616161;
 }
 
+.result{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .item{
-  display: inline-block;
+  display: block;
+  width: 100px;
   padding: 3px;
   margin-bottom: 8px;
-  background-color: aqua;
+  background-color: rgba(255, 91, 91, 0.842);
   border-radius: 5px;
   margin-right: 2px;
+  border: 2px solid rgb(66, 57, 57);
 }
 
 .image{
   width: 50px;
-  height: 100%;
+  height: 25px;
   border-radius: 3px;
+} */
+
+/* ========================2 */
+ /* body {
+  font-family: "Roboto", sans-serif;
+  background: #fff;
 }
+
+.container {
+  padding-top: 20px;
+  width: 400px;
+  min-width: 480px;
+  margin: auto;
+}
+
+.mdc-btn {
+  min-width: 88px;
+  height: 36px;
+  padding: 0 16px;
+  border: 0;
+  outline: 0;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: #00796b;
+  cursor: pointer;
+  box-shadow: 0 4px 4px 0 rgba(#414141, 0.3);
+}
+
+.mdc-btn:hover {
+  background-color: #004c40;
+}
+
+.mdc-btn:active {
+  box-shadow: 0 6px 4px 0 rgba(#414141, 0.3);
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 0 2px 2px rgba(#414141, 0.2);
+}
+
+.search-form input {
+  margin-right: 12px;
+  padding: 4px;
+  outline: 0;
+  border: 0;
+  color: #263238;
+  font-size: 18px;
+  background-color: transparent;
+  border-bottom: 2px solid #00796b;
+}
+
+.search-form::placeholder {
+  color: #616161;
+} 
+
+.image{
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+
+.result{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item{
+  padding: 4px;
+  border-radius: 4px;
+  background-color: #616161;
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-right: 5px;
+} */
+/* ======================3 */
+body {
+  font-family: "Roboto", sans-serif;
+  background: #fff;
+}
+
+.container {
+  padding-top: 20px;
+  margin: auto;
+}
+
+.mdc-btn {
+  min-width: 88px;
+  height: 36px;
+  padding: 0 16px;
+  border: 0;
+  outline: 0;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: #00796b;
+  cursor: pointer;
+  box-shadow: 0 4px 4px 0 rgba(#414141, 0.3);
+}
+
+.mdc-btn:hover {
+  background-color: #004c40;
+}
+
+.mdc-btn:active {
+  box-shadow: 0 6px 4px 0 rgba(#414141, 0.3);
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.search-form input {
+  margin-right: 12px;
+  padding: 4px;
+  outline: 0;
+  border: 0;
+  color: #263238;
+  font-size: 18px;
+  background-color: transparent;
+  border-bottom: 2px solid #00796b;
+}
+
+.search-form::placeholder {
+  color: #616161;
+}
+
+.caption{
+  font-size: 25px;
+  font-weight: 700;
+}
+
+table{
+  margin: auto;
+}
+
+th{
+  margin: 0;
+  border: 1px solid #263238;
+}
+
+.item{
+  margin: 0;
+  border: 1px solid #263238;
+  padding: 2px;
+}
+
+.beforeClick{
+  display: none;
+}
+
+.action{
+  display: block;
+}
+/*=========================== 4 */
+/* body {
+  font-family: "Roboto", sans-serif;
+  background: #fff;
+}
+
+.container {
+  padding-top: 20px;
+  width: 400px;
+  min-width: 480px;
+  margin: auto;
+}
+
+.mdc-btn {
+  min-width: 88px;
+  height: 36px;
+  padding: 0 16px;
+  border: 0;
+  outline: 0;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: #00796b;
+  cursor: pointer;
+  box-shadow: 0 4px 4px 0 rgba(#414141, 0.3);
+}
+
+.mdc-btn:hover {
+  background-color: #004c40;
+}
+
+.mdc-btn:active {
+  box-shadow: 0 6px 4px 0 rgba(#414141, 0.3);
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 0 2px 2px rgba(#414141, 0.2);
+}
+
+.search-form input {
+  margin-right: 12px;
+  padding: 4px;
+  outline: 0;
+  border: 0;
+  color: #263238;
+  font-size: 18px;
+  background-color: transparent;
+  border-bottom: 2px solid #00796b;
+}
+
+  .search-form::placeholder {
+    color: #616161;
+  } */
