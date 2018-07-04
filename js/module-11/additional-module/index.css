@@ -1,0 +1,58 @@
+/* ===2=== */
+/* .fav-icon{
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(https://image.flaticon.com/icons/svg/290/290413.svg);
+}
+
+.list{
+    display: flex;
+    justify-content: space-around;
+}
+
+.post{
+    margin-bottom: 40px;
+    border: 1px inset rgb(0, 0, 0);
+    display: block;
+    width: 100px;
+    height: 124px;
+    padding: 5px;
+} */
+
+/* ===3=== */
+body {
+    padding: 20px;
+    font-family: Roboto, sans-serif;
+  }
+  
+  form {
+    padding: 10px 20px;
+    box-shadow: 0 0 2px 2px rgba(#414141, 0.3);
+  }
+  
+  .results {
+    margin-top: 40px;
+  }
+  
+  .results li {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .results li::before {
+    display: inline-block;
+    content: "\2014";
+    margin-right: 4px;
+  }
+  
+  .results .success {
+    color: #4caf50;
+  }
+  
+  .results .error {
+    color: #f44336;
+  }
+  
