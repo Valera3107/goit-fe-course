@@ -41,5 +41,39 @@ const submitBtn = document.getElementById("submit-btn");
 
 submitBtn.addEventListener("click", validate);
 
-function validate(evt) {}
+const VALIDATORS = {
+  pattern: {
+    first_name: /^[a-zA-z -]+[a-zA-Z]{1}?$/,
+    last_name: /^[a-zA-z -]+[a-zA-Z]{1}?$/
+  },
+
+  validateDates(...rest){
+    let arrOfDates = Array.from(rest);
+    
+    const results = arrOfDates.reduce((acc, {id, value}) => {
+      const valid = this.isValid(id, value);
+      acc[id] = valid;
+      return acc;
+    }, {});
+    
+
+    return {
+      results
+    };
+
+  },
+
+  isValid(key, value){
+    return this.pattern[key].test(value);
+  }
+}
+
+function validate(evt) {
+  evt.preventDefault();
+
+  const validationResults = VALIDATORS.validateDates(firstname, lastname);
+
+  console.log(validationResults.results);
+}
+
 });
