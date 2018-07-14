@@ -1,98 +1,79 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  
-  const laptops = [
-    {
-      size: 13,
-      color: 'white',
-      price: 28000,
-      release_date: 2015,
-      name: 'Macbook Air White 13"',
-      img: 'http://demo.posthemes.com/pos_zadademo/images/placeholder.png',
-      descr:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae.',
-    },
-    {
-      size: 13,
-      color: 'gray',
-      price: 32000,
-      release_date: 2016,
-      name: 'Macbook Air Gray 13"',
-      img: 'http://demo.posthemes.com/pos_zadademo/images/placeholder.png',
-      descr:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae.',
-    },
-    {
-      size: 13,
-      color: 'black',
-      price: 35000,
-      release_date: 2017,
-      name: 'Macbook Air Black 13"',
-      img: 'http://demo.posthemes.com/pos_zadademo/images/placeholder.png',
-      descr:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae.',
-    },
-    {
-      size: 15,
-      color: 'white',
-      price: 45000,
-      release_date: 2015,
-      name: 'Macbook Air White 15"',
-      img: 'http://demo.posthemes.com/pos_zadademo/images/placeholder.png',
-      descr:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae.',
-    },
-    {
-      size: 15,
-      color: 'gray',
-      price: 55000,
-      release_date: 2016,
-      name: 'Macbook Pro Gray 15"',
-      img: 'http://demo.posthemes.com/pos_zadademo/images/placeholder.png',
-      descr:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae.',
-    },
-    {
-      size: 15,
-      color: 'black',
-      price: 45000,
-      release_date: 2017,
-      name: 'Macbook Pro Black 15"',
-      img: 'http://demo.posthemes.com/pos_zadademo/images/placeholder.png',
-      descr:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae.',
-    },
-    {
-      size: 17,
-      color: 'white',
-      price: 65000,
-      release_date: 2015,
-      name: 'Macbook Air White 17"',
-      img: 'http://demo.posthemes.com/pos_zadademo/images/placeholder.png',
-      descr:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae.',
-    },
-    {
-      size: 17,
-      color: 'gray',
-      price: 75000,
-      release_date: 2016,
-      name: 'Macbook Pro Gray 17"',
-      img: 'http://demo.posthemes.com/pos_zadademo/images/placeholder.png',
-      descr:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae.',
-    },
-    {
-      size: 17,
-      color: 'black',
-      price: 80000,
-      release_date: 2017,
-      name: 'Macbook Pro Black 17"',
-      img: 'http://demo.posthemes.com/pos_zadademo/images/placeholder.png',
-      descr:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae.',
-    },
-  ];
+  // =========(1)
+//   const listItems = [
+//     { name: 'item 1', count: 2 },
+//     { name: 'item 2', count: 4 },
+//     { name: 'item 3', count: 12 },
+//     { name: 'item 4', count: 29 },
+//   ];
+
+// const list = document.querySelector('#root');
+
+// const source = document.querySelector('#items').innerHTML.trim();
+
+// const template = Handlebars.compile(source);
+
+// const markup = template({ listItems });
+
+// list.insertAdjacentHTML('afterbegin', markup);
+
+// ==================(2)
+// const posts = [
+//   { title: "post 1", text: "text 1", isFav: true },
+//   { title: "post 2", text: "text 2", isFav: false },
+//   { title: "post 3", text: "text 3", isFav: true },
+//   { title: "post 4", text: "text 4", isFav: false }
+// ];
+
+// const list = document.querySelector('.list');
+// const source = document.querySelector('#source').innerHTML.trim();
+// const template = Handlebars.compile(source);
+// const markup = template({posts});
+
+// list.insertAdjacentHTML('afterbegin', markup);
+
+// ==================(3)
+const firstname = document.getElementById("first_name");
+const lastname = document.getElementById("last_name");
+const submitBtn = document.getElementById("submit-btn");
+
+submitBtn.addEventListener("click", validate);
+
+const VALIDATORS = {
+  pattern: {
+    first_name: /^[a-zA-z -]+[a-zA-Z]{1}?$/,
+    last_name: /^[a-zA-z -]+[a-zA-Z]{1}?$/
+  },
+
+  validateDates(...rest){
+    let arrOfDates = Array.from(rest);
+    
+    const results = arrOfDates.reduce((acc, {id, value}) => {
+      const valid = this.isValid(id, value);
+      acc[id] = valid;
+      return acc;
+    }, {});
+    
+
+    return {
+      results
+    };
+
+  },
+
+  isValid(key, value){
+    return this.pattern[key].test(value);
+  }
+}
+
+function validate(evt) {
+  evt.preventDefault();
+
+  const validationResults = VALIDATORS.validateDates(firstname, lastname);
+
+  console.log(validationResults.results);
+}
 
 });

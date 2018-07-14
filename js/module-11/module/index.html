@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Module-10</title>
+    <title>Module-11</title>
     <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
 </head>
@@ -35,10 +35,27 @@
         <li><label><input type="checkbox" name="release_date" value="2017"> 2017</label></li>
       </ul>
     </section>
-    <button type="submit">Filter</button>
-    <button type="reset">Clear</button>
+    <button class="filter" type="submit">Filter</button>
+    <button class="clear" type="reset">Clear</button>
   </form>
-          
-    <script src="index.js"></script>
+
+  <div id="root"></div>
+
+  <template id="source">
+    <div class="container">
+      <h3 class="title">{{name}}</h3>
+      <img src="" alt="">
+      <span class="date">{{release_date}}</span>
+      <p class="text">{{descr}}</p>
+      <div class="info">
+        <span class="size">{{size}}</span>
+        <span class="color">{{color}}</span>
+        <span class="price">{{price}}</span>
+      </div>
+    </div>
+  </template>
+        
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script> 
+  <script src="index.js"></script>
 </body>
 </html>
