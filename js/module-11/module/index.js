@@ -1,111 +1,83 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // const submitBtn = document.querySelector('.filter');
-  // const clearBtn = document.querySelector('.clear');
+  const submitBtn = document.querySelector('.filter');
+  const clearBtn = document.querySelector('.clear');
 
-  // submitBtn.addEventListener('click', filter);
+  submitBtn.addEventListener('click', filter);
 
-  // function filter(evt){
-  //   evt.preventDefault();
-  //   const filter = { size: [], color: [], release_date: [] }
-  //   let arrOfCheckedElem = [];
-  //   const inputs = document.querySelectorAll('input');
+  function filter(evt){
+    evt.preventDefault();
+    const filter = { size: [], color: [], release_date: [] }
+    let arrOfCheckedElem = [];
+    const inputs = document.querySelectorAll('input');
     
-  //   inputs.forEach(element => {
-  //     if(element.checked){
-  //        arrOfCheckedElem.push(element);
-  //     }
-  //   })
+    inputs.forEach(element => {
+      if(element.checked){
+         arrOfCheckedElem.push(element);
+      }
+    })
    
-  //   for(let i=0;i<arrOfCheckedElem.length ;i+=1 ){
-  //     filter[arrOfCheckedElem[i].name].push(arrOfCheckedElem[i].value);
-  //   }
+    for(let i=0;i<arrOfCheckedElem.length ;i+=1 ){
+      filter[arrOfCheckedElem[i].name].push(arrOfCheckedElem[i].value);
+    }
 
-  //   filterGoods(filter, laptops);
+    const matchedLaptops = filterGoods(filter, laptops);
 
-  // } 
+    const list = document.querySelector('#root');
+  
+    const source = document.querySelector('#source').innerHTML.trim();
+  
+    const template = Handlebars.compile(source);
+  
+    const markup = template({matchedLaptops});
 
-  // function filterGoods(arrOfFilter ,goods){
-  //   let arrOfGoods = [];
-  //   let arrOfComparsation = ['size', 'color', 'release_date'];
+    list.insertAdjacentHTML('afterbegin', markup);
+    // makeCards(matchedLaptops);
+  } 
 
-  //     for(let i = 0; i < goods.length; i+=1){
-  //       for(let j = 0; j < arrOfComparsation.length; j+=1){
-  //         console.log(goods[i].arrOfComparsation[i] === arrOfFilter.arrOfComparsation[i]);
-  //       }
-  //     }
-  //     // console.log(arrOfFilter.size.forEach(elem => {console.log(elem)}));
-  //     // element.size === arrOfFilter.size.forEach(elem => {return elem})||element.color === arrOfFilter.color.forEach(elem => {return elem})||element.release_date === arrOfFilter.release_date.forEach(elem => {return elem})
-  //     // arrOfGoods.push(element.size === arrOfFilter.size.forEach(elem => {return elem})||element.color === arrOfFilter.color.forEach(elem => {return elem})||element.release_date === arrOfFilter.release_date.forEach(elem => {return elem}));
-  //   console.log(goods);
-  //   console.log(arrOfGoods);
+  function filterGoods(arrOfFilter ,goods){
+    let arrOfGoods = [];
+    const arrOfComparsation = ['size', 'color', 'release_date'];
+     
+    for(let i=0; i < arrOfFilter.size.length; i+=1){
+      for(let j=0; j < goods.length; j+=1) {
+        if(goods[j].size == arrOfFilter.size[i] && !arrOfGoods.includes(goods[j])){
+          arrOfGoods.push(goods[j]);
+        }
+      }
+    }
+
+      for(let i=0; i < arrOfFilter.color.length; i+=1){
+        for(let j=0; j < goods.length; j+=1) {
+          if(goods[j].color == arrOfFilter.color[i] && !arrOfGoods.includes(goods[j])){
+            arrOfGoods.push(goods[j]);
+          }
+        }
+      }
+
+      for(let i=0; i < arrOfFilter.release_date.length; i+=1){
+        for(let j=0; j < goods.length; j+=1) {
+          if(goods[j].release_date == arrOfFilter.release_date[i] && !arrOfGoods.includes(goods[j])){
+            arrOfGoods.push(goods[j]);
+          }
+        }
+      }
+
+    console.log(arrOfGoods);
+  }
+
+  // function makeCards(arr){
+  //   const list = document.querySelector('#root');
+  
+  //   const source = document.querySelector('#source').innerHTML.trim();
+  
+  //   const template = Handlebars.compile(source);
+  
+  //   const markup = template({arr});
+
+  //   list.insertAdjacentHTML('afterbegin', markup);
   // }
-
-  // const list = document.querySelector('#root');
-
-  // const source = document.querySelector('#source').innerHTML.trim();
-
-  // const template = Handlebars.compile(source);
-
-  // const markup = template({});
-
-  let filter = { size: [], color: [], release_date: [] };
-const form = document.querySelector('.js-form');
-const source = document.querySelector('#source').innerHTML.trim();
-const template = Handlebars.compile(source);
-const container = document.querySelector('#root');
-
-form.addEventListener('submit', handelOnSubmit);
-form.addEventListener('reset', hanselFormReset);
-
-function matchArray(arr, value) {
-  return arr.length === 0 || arr.includes(value);
-}
-
-function handelOnSubmit(event) {
-  event.preventDefault();
-
-  const chekedCheckbox = Array.from(
-    form.querySelectorAll('input[type="checkbox"]:checked'),
-  );
-
-  filter = chekedCheckbox.reduce(
-    (acc, checkbox) => {
-      acc[checkbox.name].push(checkbox.value);
-      return acc;
-    },
-    { size: [], color: [], release_date: [] },
-  );
-
-  const matchedLaptops = laptops.filter(laptop => {
-    const matchSize = matchArray(filter.size, String(laptop.size));
-    const matchColor = matchArray(filter.color, laptop.color);
-    const matchReleaseDate = matchArray(
-      filter.release_date,
-      String(laptop.releaseDate),
-    );
-
-    return matchSize && matchColor && matchReleaseDate;
-  });
-
-  const markup = template({ laptops: matchedLaptops });
-
-  container.innerHTML = markup;
-
-  form.reset();
-}
-
-function hanselFormReset(event) {
-  resetFilter();
-  form.reset();
-}
-
-function resetFilter() {
-  filter.size = [];
-  filter.color = [];
-  filter.releaseDate = [];
-}
 
   
   const laptops = [

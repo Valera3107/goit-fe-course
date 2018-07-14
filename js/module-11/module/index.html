@@ -42,6 +42,7 @@
   <div id="root"></div>
 
   <template id="source">
+    {{#each matchedLaptops}}
     <div class="container">
       <h3 class="title">{{name}}</h3>
       <!-- <img src="" alt=""> -->
@@ -53,6 +54,7 @@
         <span class="price">{{price}}</span>
       </div>
     </div>
+    {{/each}}
   </template>
         
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script> 
