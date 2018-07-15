@@ -1,0 +1,130 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.form{
+    width: 670px;
+    padding: 30px;
+    display: flex;
+    border-radius: 15px;
+    justify-content: space-around;
+    background: #cf3a3a;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+h2{
+  font-family: 'Chonburi', cursive;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.filter, .clear{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    font-family: 'Chonburi', cursive;
+}
+
+.filter{
+    background-color: #76c070;
+}
+
+.clear{
+    background-color: #ca5a5a;
+}
+
+li{
+    list-style: none;
+    width: 108px;
+    height: 32px;
+    background-color: #a83131;
+    padding: 7px;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+label{
+    position: relative;
+    top: 5%;
+    left: 32%;
+    font-family: 'Chonburi', cursive;
+}
+
+input{
+    border-radius: 5%;
+    position: absolute;
+    top: 19%;
+    left: -50%;
+}
+
+li:not(:nth-child(3n)){
+    margin-bottom: 5px;
+}
+
+.container{
+    margin: 0 auto;
+    display: block;
+    border: 1px solid #1c2525;
+    padding: 10px 20px;
+    width: 552px;
+    height: 290px;
+    background-color: #d1c1bc;
+    border-radius: 5px;
+}
+
+.container:not(:last-child){
+    margin-bottom: 20px;
+}
+
+.title{
+    margin-bottom: 10px;
+    font-family: 'Chonburi', cursive;
+    font-size: 20px;
+}
+
+img{
+    width: 300px;
+    height: 200px;
+    float: left;
+}
+
+.date{
+  font-family: 'Chonburi', cursive;
+  font-size: 17px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #000000;
+}
+
+.text{
+  font-size: 18px;
+  font-family: 'Chonburi', cursive;
+  color: #000000;
+  margin-bottom: 5px;
+  margin-top: 24px;
+}
+
+.info{
+    margin-top: 60px;
+}
+
+.info > span {
+  font-family: 'Chonburi', cursive;
+  color: #000000;
+}
+
+.info > span:not(:last-child){
+    margin-right: 14px;
+}
+
+
+
+
+
+.result{
+    margin: 0 auto 10px auto;
+}

@@ -1,84 +1,6 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const submitBtn = document.querySelector('.filter');
-  const clearBtn = document.querySelector('.clear');
-
-  submitBtn.addEventListener('click', filter);
-
-  function filter(evt){
-    evt.preventDefault();
-    const filter = { size: [], color: [], release_date: [] }
-    let arrOfCheckedElem = [];
-    const inputs = document.querySelectorAll('input');
-    
-    inputs.forEach(element => {
-      if(element.checked){
-         arrOfCheckedElem.push(element);
-      }
-    })
-   
-    for(let i=0;i<arrOfCheckedElem.length ;i+=1 ){
-      filter[arrOfCheckedElem[i].name].push(arrOfCheckedElem[i].value);
-    }
-
-    const matchedLaptops = filterGoods(filter, laptops);
-
-    const list = document.querySelector('#root');
-  
-    const source = document.querySelector('#source').innerHTML.trim();
-  
-    const template = Handlebars.compile(source);
-  
-    const markup = template({matchedLaptops});
-
-    list.insertAdjacentHTML('afterbegin', markup);
-    // makeCards(matchedLaptops);
-  } 
-
-  function filterGoods(arrOfFilter ,goods){
-    let arrOfGoods = [];
-    const arrOfComparsation = ['size', 'color', 'release_date'];
-     
-    for(let i=0; i < arrOfFilter.size.length; i+=1){
-      for(let j=0; j < goods.length; j+=1) {
-        if(goods[j].size == arrOfFilter.size[i] && !arrOfGoods.includes(goods[j])){
-          arrOfGoods.push(goods[j]);
-        }
-      }
-    }
-
-      for(let i=0; i < arrOfFilter.color.length; i+=1){
-        for(let j=0; j < goods.length; j+=1) {
-          if(goods[j].color == arrOfFilter.color[i] && !arrOfGoods.includes(goods[j])){
-            arrOfGoods.push(goods[j]);
-          }
-        }
-      }
-
-      for(let i=0; i < arrOfFilter.release_date.length; i+=1){
-        for(let j=0; j < goods.length; j+=1) {
-          if(goods[j].release_date == arrOfFilter.release_date[i] && !arrOfGoods.includes(goods[j])){
-            arrOfGoods.push(goods[j]);
-          }
-        }
-      }
-
-    console.log(arrOfGoods);
-  }
-
-  // function makeCards(arr){
-  //   const list = document.querySelector('#root');
-  
-  //   const source = document.querySelector('#source').innerHTML.trim();
-  
-  //   const template = Handlebars.compile(source);
-  
-  //   const markup = template({arr});
-
-  //   list.insertAdjacentHTML('afterbegin', markup);
-  // }
-
   
   const laptops = [
     {
@@ -172,5 +94,68 @@ document.addEventListener('DOMContentLoaded', () => {
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, beatae.',
     },
   ];
+
+  const submitBtn = document.querySelector('.filter');
+  const clearBtn = document.querySelector('.clear');
+  const list = document.querySelector('#root');
+
+  submitBtn.addEventListener('click', filter);
+  clearBtn.addEventListener('click', reset);
+
+  function reset(evt){
+    evt.preventDefault();
+    
+    const arrOfCards = list.querySelectorAll('.container');
+    arrOfCards.forEach(element => element.remove());
+
+    const labels = document.querySelectorAll('input');
+    labels.forEach(element => {
+      if(element.checked){
+        element.checked = false;
+      }
+    })
+  }
+
+  function filter(event){
+    event.preventDefault();
+   
+    const inputs = document.querySelectorAll('input');
+    
+    let filter = getCheckedPoints(inputs);
+
+    const matchedLaptops = filterGoods(filter, laptops);
+
+    const list = document.querySelector('#root');
+    const source = document.querySelector('#source').innerHTML.trim();
+    const template = Handlebars.compile(source);
+    const markup = template({matchedLaptops});
+    list.insertAdjacentHTML('afterbegin', markup);
+  } 
+
+  function getCheckedPoints(arrOfInputs) {
+    let arrOfCheckedElem = [];
+    let arrOfFilter = { size: [], color: [], release_date: [] };
+    arrOfInputs.forEach(element => {
+      if(element.checked){
+         arrOfCheckedElem.push(element);
+      }
+    })
+    for(let i=0;i<arrOfCheckedElem.length ;i+=1 ){
+      arrOfFilter[arrOfCheckedElem[i].name].push(arrOfCheckedElem[i].value);
+    }
+    return arrOfFilter;
+  }
+
+  function filterGoods(arrOfFilter ,goods){
+    let arrOfGoods = [];
+    goods.filter(element => {
+      if(arrOfFilter.size.includes(`${element.size}`) 
+      && arrOfFilter.color.includes(`${element.color}`) 
+      && arrOfFilter.release_date.includes(`${element.release_date}`)){
+        arrOfGoods.push(element);
+      }
+    })
+    return arrOfGoods;
+  }
 
 });

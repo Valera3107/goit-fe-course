@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Module-11</title>
-    <link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chonburi" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -39,19 +39,20 @@
     <button class="clear" type="reset">Clear</button>
   </form>
 
-  <div id="root"></div>
+   <div id="root" class="result"></div>
+
 
   <template id="source">
     {{#each matchedLaptops}}
     <div class="container">
       <h3 class="title">{{name}}</h3>
-      <!-- <img src="" alt=""> -->
+      <img src="{{img}}" alt="laptops image">
       <span class="date">{{release_date}}</span>
-      <p class="text">{{descr}}</p>
+      <p class="text">About: {{descr}}</p>
       <div class="info">
-        <span class="size">{{size}}</span>
-        <span class="color">{{color}}</span>
-        <span class="price">{{price}}</span>
+        <span class="size">Size: {{size}}</span>
+        <span class="color">Color: {{color}}</span>
+        <span class="price">{{price}}$</span>
       </div>
     </div>
     {{/each}}
