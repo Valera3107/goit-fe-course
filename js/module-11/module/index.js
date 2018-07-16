@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function filterGoods(arrOfFilter ,goods){
     let arrOfGoods = [];
     goods.filter(element => {
+  
       if(arrOfFilter.size.includes(`${element.size}`) 
       && arrOfFilter.color.includes(`${element.color}`) 
       && arrOfFilter.release_date.includes(`${element.release_date}`)){
