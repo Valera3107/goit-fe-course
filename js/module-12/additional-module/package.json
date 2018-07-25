@@ -40,6 +40,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-stylelint": "^6.0.0",
     "gulp-svgstore": "^6.1.1",
+    "gulp-ts": "^0.3.0",
     "gulp-uglify": "^3.0.0",
     "run-sequence": "^2.2.1",
     "stylelint": "^9.1.1"

@@ -19,6 +19,20 @@ const concat = require('gulp-concat');
 const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 const sequence = require('run-sequence');
+var ts = require('gulp-ts');
+ 
+// ...
+gulp.task('ts', function() {
+  gulp.src('./src/js/ts/*.ts')
+    .pipe(ts())
+    .pipe(
+      babel({
+        presets: ['env'],
+      }),
+    )
+    .pipe(concat('ts-bundle.ts'))
+    .pipe(gulp.dest('./build/js/ts'));
+});
 
 gulp.task('html', () =>
   gulp
@@ -102,6 +116,7 @@ gulp.task('watch', () => {
   gulp.watch('src/*.html', ['html']).on('change', browserSync.reload);
   gulp.watch('src/sass/**/*.scss', ['styles']);
   gulp.watch('src/js/**/*.js', ['scripts']);
+  gulp.watch('src/js/ts/**/*.ts', ['ts']);
 });
 
 gulp.task('serve', ['styles'], () =>
@@ -130,6 +145,7 @@ gulp.task('build', cb =>
     'styles',
     'html',
     'scripts',
+    'ts',
     cb,
   ),
 );
