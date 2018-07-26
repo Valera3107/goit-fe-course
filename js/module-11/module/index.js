@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.querySelector('.filter');
   const clearBtn = document.querySelector('.clear');
   const list = document.querySelector('#root');
+  const form = document.querySelector('.form');
 
   submitBtn.addEventListener('click', filter);
   clearBtn.addEventListener('click', reset);
@@ -105,21 +106,23 @@ document.addEventListener('DOMContentLoaded', () => {
   function reset(evt){
     evt.preventDefault();
     
-    const arrOfCards = list.querySelectorAll('.container');
-    arrOfCards.forEach(element => element.remove());
+    list.innerHTML = '';
 
-    const labels = document.querySelectorAll('input');
+    const labels = Array.from(
+      form.querySelectorAll('input[type="checkbox"]:checked'),
+    );
+
     labels.forEach(element => {
-      if(element.checked){
         element.checked = false;
-      }
     })
   }
 
   function filter(event){
     event.preventDefault();
    
-    const inputs = document.querySelectorAll('input');
+    const inputs = Array.from(
+      form.querySelectorAll('input[type="checkbox"]:checked'),
+    );
     
     let filter = getCheckedPoints(inputs);
 
@@ -133,16 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
   } 
 
   function getCheckedPoints(arrOfInputs) {
-    let arrOfCheckedElem = [];
-    let arrOfFilter = { size: [], color: [], release_date: [] };
-    arrOfInputs.forEach(element => {
-      if(element.checked){
-         arrOfCheckedElem.push(element);
-      }
-    })
-    for(let i=0;i<arrOfCheckedElem.length ;i+=1 ){
-      arrOfFilter[arrOfCheckedElem[i].name].push(arrOfCheckedElem[i].value);
-    }
+    let arrOfFilter = arrOfInputs.reduce(
+      (acc, elem) => {
+        acc[elem.name].push(elem.value);
+        return acc;
+      }, { size: [], color: [], release_date: [] }
+    );
     return arrOfFilter;
   }
 
