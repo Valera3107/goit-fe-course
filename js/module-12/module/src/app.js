@@ -8,14 +8,18 @@ const addBtn = document.querySelector('.button');
 const input = document.querySelector('.input');
 const containerForCards = document.querySelector('.container');
 const API_KEY = '5b5acec53381f4ba3dcec447cb39460a176c95534f3ac';
+let savedUrls = storage.get();
 
+if(savedUrls) {
+  hydrateUrlCard(savedUrls);
+}
 
 addBtn.addEventListener('click', addNewUrl);
 
-// function deleteCard(evt) {
-//   evt.preventDefault();
-//   evt.target.remove();
-// }
+function deleteCard(evt) {
+  evt.preventDefault();
+  evt.target.remove();
+}
 
 function addNewUrl(evt) {
   evt.preventDefault();
@@ -24,10 +28,8 @@ function addNewUrl(evt) {
   .then(res => res.json())
   .then(data => {
     hydrateUrlCard(data);
+    storage.set(data);
   });
-
-  // deleteBtn = document.querySelector('.btn-reset');
-  // deleteBtn.addEventListener('click', deleteCard);
 }
 
 function saveCards() {
@@ -45,5 +47,5 @@ function createUrlItem(item) {
 }
 
 function addNewCard(markup) {
-  containerForCards.insertAdjacentHTML('beforeend', markup);
+  containerForCards.insertAdjacentHTML('afterbegin', markup);
 }
