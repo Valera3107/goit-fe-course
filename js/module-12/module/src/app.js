@@ -7,6 +7,7 @@ import './sass/test.scss';
 const addBtn = document.querySelector('.button');
 const input = document.querySelector('.input');
 const containerForCards = document.querySelector('.container');
+const clearBtn = document.querySelector('.clear');
 const API_KEY = '5b5de084291166ca757657eb93d1f04d87b4de35f4a7e';
 let fetchedUrl = storage.get();
 
@@ -14,7 +15,14 @@ if(fetchedUrl) {
   hydrateUrlCard(fetchedUrl);
 }
 
+clearBtn.addEventListener('click', clearInput);
 addBtn.addEventListener('click', addNewUrl);
+
+function clearInput(evt) {
+  evt.preventDefault();
+
+  input.value = '';
+}
 
 function addNewUrl(evt) {
   evt.preventDefault();
@@ -26,6 +34,7 @@ function addNewUrl(evt) {
       fetchedUrl = [];
       fetchedUrl.unshift(data);
     } else if(checkUrlIsNew(data.title)){
+      // let arrOfDeleteBtn = document.querySelectorAll()
       fetchedUrl.unshift(data);
     }
 
@@ -33,6 +42,20 @@ function addNewUrl(evt) {
     hydrateUrlCard(fetchedUrl);
     storage.set(fetchedUrl);
   });
+}
+
+function deleteBtn() {
+  const deleteBtn = document.querySelector('.btn-reset');
+  deleteBtn.addEventListener('click', deleteBtnFunctional);
+}
+
+function deleteBtnFunctional({ target }) {
+  const nodeName = target.nodeName;
+  console.log(target.nodeName);
+
+  if(nodeName !== 'BUTTON'){ return };
+
+  console.log(target.parentNode);
 }
 
 function checkUrlIsNew(elem) {
