@@ -7,7 +7,7 @@ import './sass/test.scss';
 const addBtn = document.querySelector('.button');
 const input = document.querySelector('.input');
 const containerForCards = document.querySelector('.container');
-const API_KEY = '5b5c8aea8435ee921159bd661dd4654425725c01c9047';
+const API_KEY = '5b5de084291166ca757657eb93d1f04d87b4de35f4a7e';
 let fetchedUrl = storage.get();
 
 if(fetchedUrl) {
@@ -22,15 +22,25 @@ function addNewUrl(evt) {
   fetch(`http://api.linkpreview.net/?key=${API_KEY}&q=${input.value}`)
   .then(res => res.json())
   .then(data => {
-    fetchedUrl.unshift(data);
+    if(fetchedUrl === null){
+      fetchedUrl = [];
+      fetchedUrl.unshift(data);
+    } else if(checkUrlIsNew(data.title)){
+      fetchedUrl.unshift(data);
+    }
+
     updateContainer();
     hydrateUrlCard(fetchedUrl);
     storage.set(fetchedUrl);
   });
+}
 
-
-  const deleteBtn = document.querySelectorAll('.btn-reset');
-  console.log(deleteBtn);
+function checkUrlIsNew(elem) {
+  const arrOfTitle = [];
+  if(fetchedUrl.length !== 0){
+    fetchedUrl.forEach(elem => arrOfTitle.push(elem.title));
+  }
+  return arrOfTitle.includes(elem) ? false : true;
 }
 
 function updateContainer() {
