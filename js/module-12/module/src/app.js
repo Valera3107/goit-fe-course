@@ -23,6 +23,7 @@ function clearInput(evt) {
   input.value = '';
 }
 
+
 function addNewUrl(evt) {
   evt.preventDefault();
 
