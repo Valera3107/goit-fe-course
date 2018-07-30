@@ -20,7 +20,6 @@ addBtn.addEventListener('click', addNewUrl);
 
 function clearInput(evt) {
   evt.preventDefault();
-
   input.value = '';
 }
 
@@ -34,28 +33,12 @@ function addNewUrl(evt) {
       fetchedUrl = [];
       fetchedUrl.unshift(data);
     } else if(checkUrlIsNew(data.title)){
-      // let arrOfDeleteBtn = document.querySelectorAll()
       fetchedUrl.unshift(data);
     }
-
     updateContainer();
     hydrateUrlCard(fetchedUrl);
     storage.set(fetchedUrl);
   });
-}
-
-function deleteBtn() {
-  const deleteBtn = document.querySelector('.btn-reset');
-  deleteBtn.addEventListener('click', deleteBtnFunctional);
-}
-
-function deleteBtnFunctional({ target }) {
-  const nodeName = target.nodeName;
-  console.log(target.nodeName);
-
-  if(nodeName !== 'BUTTON'){ return };
-
-  console.log(target.parentNode);
 }
 
 function checkUrlIsNew(elem) {
