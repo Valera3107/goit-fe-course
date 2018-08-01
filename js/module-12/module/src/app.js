@@ -62,13 +62,13 @@ function deleteItem({target}) {
   const titleElement = item.querySelector('.block__title');
 
   const arrOfCards = storage.get();
+  const updateList = arrOfCards.filter(element.title !== titleElement.textContent);
 
-  arrOfCards = arrOfCards.filter(element.title !== titleElement.textContent);
   
   updateContainer();
-  hydrateUrlCard(arrOfCards);
+  hydrateUrlCard(updateList);
   storage.clear();
-  storage.set(arrOfCards);
+  storage.set(updateList);
   item.innerHTML = '';
 }
 
