@@ -18,6 +18,7 @@ if(fetchedUrl) {
 
 clearBtn.addEventListener('click', clearInput);
 addBtn.addEventListener('click', addNewUrl);
+containerForCards.addEventListener('click', deleteItem);
 
 // ===========Clear input func
 
@@ -46,11 +47,6 @@ function addNewUrl(evt) {
   });
 }
 
-
-deleteBtn = document.querySelector('.btn-reset');
-deleteBtn.addEventListener('click', deleteItem);
-
-
 // ===========Delete func
 
 function deleteItem({target}) {
@@ -62,8 +58,9 @@ function deleteItem({target}) {
   const titleElement = item.querySelector('.block__title');
 
   const arrOfCards = storage.get();
-  const updateList = arrOfCards.filter(element.title !== titleElement.textContent);
+  const updateList = arrOfCards.filter(element => element.title !== titleElement.textContent);
 
+  fetchedUrl = [];
   
   updateContainer();
   hydrateUrlCard(updateList);
