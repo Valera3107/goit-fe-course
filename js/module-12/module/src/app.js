@@ -1,4 +1,4 @@
-import {fetchUrl} from './services/api';
+// import {fetchUrl} from './services/api';
 import * as storage from './services/storage';
 import urlCardTemplate from './templates/url-item.hbs';
 import './styles.css';
@@ -31,7 +31,7 @@ function clearInput(evt) {
 function addNewUrl(evt) {
   evt.preventDefault();
 
-  fetch(`http://api.linkpreview.net/?key=${API_KEY}&q=${input.value}`)
+  fetch(`https://api.linkpreview.net/?key=${API_KEY}&q=${input.value}`)
   .then(res => res.json())
   .then(data => {
     if(fetchedUrl === null){
