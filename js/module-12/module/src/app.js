@@ -8,11 +8,14 @@ const addBtn = document.querySelector('.button');
 const input = document.querySelector('.input');
 const containerForCards = document.querySelector('.container');
 const clearBtn = document.querySelector('.clear');
-const API_KEY = '5b5de084291166ca757657eb93d1f04d87b4de35f4a7e';
+const API_KEY = '5b615c62b034a0ff7d742c244e2bacb145df5b5c6c34a';
 let fetchedUrl = storage.get();
+let deleteBtn;
 
 if(fetchedUrl) {
   hydrateUrlCard(fetchedUrl);
+  deleteBtn = document.querySelectorAll('.btn-reset');
+  deleteBtn.forEach(elem => elem.addEventListener('click', deleteItem));
 }
 
 clearBtn.addEventListener('click', clearInput);
@@ -40,6 +43,24 @@ function addNewUrl(evt) {
     hydrateUrlCard(fetchedUrl);
     storage.set(fetchedUrl);
   });
+}
+
+function deleteItem({target}) {
+  const nodeName = target.nodeName;
+
+  if(nodeName !== 'BUTTON') return;
+
+  const item = target.parentNode;
+  const titleElement = item.querySelector('.block__title');
+
+  const arrOfCards = storage.get();
+  
+  arrOfCards.filter(element => element.title !== titleElement.textContent);
+  updateContainer();
+  hydrateUrlCard(arrOfCards);
+  storage.clear();
+  storage.set(arrOfCards);
+  item.innerHTML = '';
 }
 
 function checkUrlIsNew(elem) {
