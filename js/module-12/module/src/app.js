@@ -59,12 +59,12 @@ function deleteItem({target}) {
   const arrOfCards = storage.get();
   const updateList = arrOfCards.filter(element => element.title !== titleElement.textContent);
 
-  fetchedUrl = [];
+  fetchedUrl = updateList;
   
   updateContainer();
-  hydrateUrlCard(updateList);
+  hydrateUrlCard(fetchedUrl);
   storage.clear();
-  storage.set(updateList);
+  storage.set(fetchedUrl);
   item.innerHTML = '';
 }
 
