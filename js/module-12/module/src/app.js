@@ -21,11 +21,15 @@ if(fetchedUrl) {
 clearBtn.addEventListener('click', clearInput);
 addBtn.addEventListener('click', addNewUrl);
 
+
+// ===========Clear input func
+
 function clearInput(evt) {
   evt.preventDefault();
   input.value = '';
 }
 
+// ===========Get url info func
 
 function addNewUrl(evt) {
   evt.preventDefault();
@@ -45,6 +49,8 @@ function addNewUrl(evt) {
   });
 }
 
+// ===========Delete func
+
 function deleteItem({target}) {
   const nodeName = target.nodeName;
 
@@ -63,6 +69,9 @@ function deleteItem({target}) {
   item.innerHTML = '';
 }
 
+// ===========Check url func
+
+
 function checkUrlIsNew(elem) {
   const arrOfTitle = [];
   if(fetchedUrl.length !== 0){
@@ -71,9 +80,13 @@ function checkUrlIsNew(elem) {
   return arrOfTitle.includes(elem) ? false : true;
 }
 
+// ===========Clear container func
+
 function updateContainer() {
   containerForCards.innerHTML = "";
 }
+
+// ===========Hydrate and creat cards functions
 
 function hydrateUrlCard(urls) {
   const markup = createUrlItems(urls);
