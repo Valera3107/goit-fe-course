@@ -48,7 +48,7 @@ function addNewUrl(evt) {
 
 
 deleteBtn = document.querySelectorAll('.btn-reset');
-deleteBtn.forEach(elem => elem.addEventListener('click', deleteItem));
+deleteBtn.addEventListener('click', deleteItem);
 
 
 // ===========Delete func
