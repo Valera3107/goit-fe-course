@@ -14,13 +14,10 @@ let deleteBtn;
 
 if(fetchedUrl) {
   hydrateUrlCard(fetchedUrl);
-  deleteBtn = document.querySelectorAll('.btn-reset');
-  deleteBtn.forEach(elem => elem.addEventListener('click', deleteItem));
 }
 
 clearBtn.addEventListener('click', clearInput);
 addBtn.addEventListener('click', addNewUrl);
-
 
 // ===========Clear input func
 
@@ -49,6 +46,11 @@ function addNewUrl(evt) {
   });
 }
 
+
+deleteBtn = document.querySelectorAll('.btn-reset');
+deleteBtn.forEach(elem => elem.addEventListener('click', deleteItem));
+
+
 // ===========Delete func
 
 function deleteItem({target}) {
@@ -61,7 +63,11 @@ function deleteItem({target}) {
 
   const arrOfCards = storage.get();
   
-  arrOfCards.filter(element => element.title !== titleElement.textContent);
+  arrOfCards.forEach(element => {
+    if(element.title === titleElement.textContent){
+      arrOfCards.pop(element);
+    }
+  });
   updateContainer();
   hydrateUrlCard(arrOfCards);
   storage.clear();
