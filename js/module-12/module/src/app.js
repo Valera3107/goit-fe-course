@@ -43,6 +43,7 @@ function addNewUrl(evt) {
     updateContainer();
     hydrateUrlCard(fetchedUrl);
     storage.set(fetchedUrl);
+    console.log(fetchedUrl);
   });
 }
 
@@ -66,6 +67,7 @@ function deleteItem({target}) {
   storage.clear();
   storage.set(fetchedUrl);
   item.innerHTML = '';
+  console.log(fetchedUrl);
 }
 
 // ===========Check url func
