@@ -10,7 +10,6 @@ const containerForCards = document.querySelector('.container');
 const clearBtn = document.querySelector('.clear');
 const API_KEY = '5b615c62b034a0ff7d742c244e2bacb145df5b5c6c34a';
 let fetchedUrl = storage.get();
-let deleteBtn;
 
 if(fetchedUrl) {
   hydrateUrlCard(fetchedUrl);
