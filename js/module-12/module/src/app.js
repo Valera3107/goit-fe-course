@@ -62,12 +62,9 @@ function deleteItem({target}) {
   const titleElement = item.querySelector('.block__title');
 
   const arrOfCards = storage.get();
+
+  arrOfCards = arrOfCards.filter(element.title !== titleElement.textContent);
   
-  arrOfCards.forEach(element => {
-    if(element.title === titleElement.textContent){
-      arrOfCards.pop(element);
-    }
-  });
   updateContainer();
   hydrateUrlCard(arrOfCards);
   storage.clear();
