@@ -1,20 +1,19 @@
 export default class Controller {
-  constructor(model, view) {
-    this.model = model;
+  constructor(modal, view) {
+    this.modal = modal;
     this.view = view;
 
     view.on('add', this.addNote.bind(this));
-    view.on('remove', this.removeNote.bind(this));
+    view.on('add', this.removeNote.bind(this));
   }
 
-  addNote(text) {
-    this.model.addItem(text).then(item => this.view.addNote(item));
-
-    console.log(this.model);
+  addNote({text, title, select}) {
+    const item = this.modal.addItem({text, title, select});
+    this.view.addNote(item);
   }
 
   removeNote(id) {
-    this.model.removeItem(id);
-    this.view.removeNote(id);
+    this.modal.removeItem(id);
+    this.view.removeItem(id);
   }
 }

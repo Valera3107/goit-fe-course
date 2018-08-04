@@ -6,26 +6,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Module-13</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
 
 <body>
-  <form class="form">
-      <input type="text" class="input">
-      <textarea name = "atext" placeholder = "Введите текст..."></textarea>
-      <select name = "category">
-        <option value = "1" selected>первое</option> 
-        <option value = "2">второе</option> 
-        <option value = "3">салат</option>  
-        <option value = "4">сладкое</option>
+  <form class="form add">
+      <input type="text" class="input name" placeholder = "Input text">
+      <textarea class="text" name = "atext" placeholder = "Введите текст..."></textarea>
+      <select class="select" name = "category">
+        <option value = "1" selected>first</option> 
+        <option value = "2">second</option> 
+        <option value = "3">salad</option>  
+        <option value = "4">sweet</option>
       </select>
-      <button type="submit">Добавить</button>
+      <button class="addBtn" type="submit">Добавить</button>
+  </form>
+  <form class="form filter">
+    <h4 class="title">filter :</h4>
+    <select class="select" name = "category">
+        <option value = "1" selected>first</option> 
+        <option value = "2">second</option> 
+        <option value = "3">salad</option>  
+        <option value = "4">sweet</option>
+        <option value = "5">all</option>
+      </select>
   </form>
 
   <main class="main">
     <div class="container">
+      <!-- <div class="item">
+        <h2  class="title-recipe">Napoleom</h2>
+        <div class="block">
+            <p class="recipe">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa pariatur, nisi quam maxime quo dolorum ut eius tempora! Cumque facilis sint sapiente consectetur! Laudantium voluptate voluptatem assumenda explicabo molestias perferendis mollitia sequi iusto alias corrupti quasi, quae.</p>
+            <div class="action">
+              <button class="button delete" type="reset">Delete</button>
+              <button class="button edit" type="submit">Edit</button>
+            </div>
+        </div>
+      </div> -->
     </div>
   </main>
+
+  <div class="backdrop">
+      <div class="modal">
+        <input type="text" name="" class="edit-input" id="">
+        <textarea class="input" rows="5"></textarea>
+        <div class="actions">
+          <button type="button" class="button" data-action="edit-success">Сохранить</button>
+          <button type="button" class="button" data-action="edit-cancel">Отмена</button>
+        </div>
+      </div>
+    </div>  
 
 </body>
 

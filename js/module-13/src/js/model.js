@@ -5,19 +5,18 @@ export default class Model {
     this.items = items;
   }
 
-  addItem(text) {
+  addItem({text, title, select}){
     const item = {
       id: v4(),
       text,
-    };
+      title,
+      select,
+    }
 
+    storage.set(item);
     this.items.push(item);
 
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(item);
-      }, 200);
-    });
+    return item;
   }
 
   updateItem(id, props) {
@@ -25,10 +24,11 @@ export default class Model {
 
     const keys = Object.keys(props);
 
-    keys.forEach(key => (item[key] = props[key]));
+    keys.forEach(key => item[key] = props[key]);
   }
 
   removeItem(id) {
     this.items = this.items.filter(item => item.id !== id);
   }
+
 }
