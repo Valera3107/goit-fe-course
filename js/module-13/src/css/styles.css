@@ -25,6 +25,12 @@ body {
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
 }
 
+.container{
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+}
+
 .input{
   border-radius: 5px;
   padding: 3px;
@@ -66,7 +72,7 @@ body {
 
 .filter{
   margin-top: 10px;
-  width: 180px;
+  width: 260px;
 }
 
 .item{

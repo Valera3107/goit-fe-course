@@ -5,10 +5,11 @@ export default class View extends EventEmitter{
     super();
 
     this.form = document.querySelector('.add');
-    this.text = this.form.querySelector('.recipe');
-    this.title = this.form.querySelector('.title-recipe');
+    this.text = this.form.querySelector('.text');
+    this.title = this.form.querySelector('.name');
     this.select = this.form.querySelector('.select');
-    this.container = document.querySelector('.container'); 
+    this.container = document.querySelector('.notes');
+    this.filter = document.querySelector('.filterBtn');
 
     this.form.addEventListener('submit', this.handleAdd.bind(this));
   }
@@ -16,9 +17,9 @@ export default class View extends EventEmitter{
   handleAdd(evt) {
     evt.preventDefault();
 
-    if(this.title.value === '' && this.text.value === '') return;
+    if(this.text.value === '' && this.title.value === '') return;
 
-    this.emit('add', this.title.value, this.text.value);
+    this.emit('add', this.text.value, this.title.value, this.select.value);
   }
 
   createNote(note) {
@@ -92,6 +93,6 @@ export default class View extends EventEmitter{
 
   removeNote(id) {
     const item = this.container.querySelector(`[data-id="${id}"]`);
-    this.container.removeChild(item);
+    this.container.remove(item);
   }
 }

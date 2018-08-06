@@ -1,20 +1,21 @@
 import v4 from 'uuid/v4';
+import * as storage from '../services/storage';
 
 export default class Model {
   constructor(items = []) {
     this.items = items;
   }
 
-  addItem({text, title, select}){
+  addItem(text, title, select){
     const item = {
       id: v4(),
       text,
       title,
       select,
     }
-
-    storage.set(item);
+    
     this.items.push(item);
+    storage.set(this.items);
 
     return item;
   }
@@ -29,6 +30,13 @@ export default class Model {
 
   removeItem(id) {
     this.items = this.items.filter(item => item.id !== id);
+    // storage.clear();
+    // storage.set(this.items);
   }
+
+  // deleteFromStorage(id) {
+  //   const item = this.items.find(item => item.id === id);
+  //   this.removeItem(item.id);
+  // }
 
 }
