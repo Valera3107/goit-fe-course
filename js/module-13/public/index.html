@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
 
-<body>
+<body class="page">
   <form class="form add">
       <input type="text" class="input name" placeholder = "Input text">
       <textarea class="text" name = "atext" placeholder = "Введите текст..."></textarea>
@@ -21,18 +21,19 @@
         <option value = "3">salad</option>  
         <option value = "4">sweet</option>
       </select>
-      <button class="addBtn" type="submit">Add</button>
+      <button class="addBtn button">Add</button>
   </form>
   <form class="form filter">
     <h4 class="title">filter :</h4>
-    <select class="select" name = "category">
-      <option value = "1" selected>all</option> 
-      <option value = "2">first</option> 
-      <option value = "3">second</option>  
-      <option value = "4">salad</option>
-      <option value = "5">sweet</option>
+    <select class="select filter-select" name = "category">
+        <option class="filter-item" value = "1">first</option> 
+        <option class="filter-item" value = "2">second</option> 
+        <option class="filter-item" value = "3">salad</option>  
+        <option class="filter-item" value = "4">sweet</option>
+        <option class="filter-item" value = "5">all</option> 
+
     </select>
-    <button class="filterBtn" type="submit">Push</button>
+    <button class="filterBtn button" type="submit">Push</button>
   </form>
 
   <main class="main">
@@ -41,11 +42,11 @@
 
   <div class="backdrop">
       <div class="modal">
-        <input type="text" name="" class="edit-input" id="">
-        <textarea class="input" rows="5"></textarea>
+        <input type="text" class="edit-input" id="">
+        <textarea class="edit-text" rows="5"></textarea>
         <div class="actions">
-          <button type="button" class="button" data-action="edit-success">Сохранить</button>
-          <button type="button" class="button" data-action="edit-cancel">Отмена</button>
+          <button type="button" class="button" data-action="edit-success">Save</button>
+          <button type="button" class="button" data-action="edit-cancel">Cancel</button>
         </div>
       </div>
     </div>  

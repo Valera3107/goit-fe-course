@@ -25,10 +25,20 @@ body {
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
 }
 
-.container{
-  display: block;
+.notes{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   margin: 20px auto;
   padding: 10px;
+}
+
+.item{
+  margin-right: 20px;
+}
+
+.item{
+  margin-bottom: 25px;
 }
 
 .input{
@@ -53,17 +63,15 @@ body {
   outline: 0;
 }
 
-.addBtn{
+.button{
   border-radius: 5px;
-  background-color: #649dcf;
-  width: 88px;
-  height: 30px;
+  background-color: #8ed9df;
   color: #ffffff;
   outline: 0;
 }
 
-.addBtn:hover{
-  background-color: #2d6bdf;
+.button:hover{
+  background-color: #2ddfdf;
 }
 
 .title{
@@ -78,15 +86,16 @@ body {
 .item{
   width: 250px;
   height: 338px;
-  background-color: #e9da0a;
+  background-color: #ffffff;
   border-radius: 5px;
+  box-shadow: 1px 1px 23px 5px #000000;
   position: relative;
 }
 
 .title-recipe{
   font-family: 'Permanent Marker', cursive;
-  background-color: #ac4002;
-  color: #000000;
+  background-color: #76d8d8;
+  color: #ffffff;
   width: 100%;
   padding: 5px;
   text-align: center;
@@ -97,10 +106,11 @@ body {
   color: #000000;
   line-height: 1.2;
   font-family: 'Dancing Script', cursive;
+  font-size: 23px;
 }
 
 .block{
-  padding: 5px;
+  padding: 0 10px;
 }
 
 .action{
