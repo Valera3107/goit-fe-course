@@ -1,5 +1,5 @@
 import v4 from 'uuid/v4';
-import * as storage from '../services/storage';
+import * as storage from './services/storage';
 
 export default class Model {
   constructor(items = []) {
@@ -9,7 +9,7 @@ export default class Model {
 
   addItem(text, title, select){
     const item = {
-      id: v4(),
+      id: '1',
       text,
       title,
       select,
