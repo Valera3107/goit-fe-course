@@ -1,5 +1,5 @@
 import EventEmitter from '../src/services/event-emitter';
-import recipeCardTemplate from '../src/templates';
+//import recipeCardTemplate from '../src/templates/grid-item';
 
 export default class View extends EventEmitter{
   constructor() {

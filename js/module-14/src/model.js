@@ -7,9 +7,9 @@ export default class Model {
     this.selectedItemId = null;
   }
 
-  addItem(text, title, select){
+  addItem(id, text, title, select){
     const item = {
-      id: '1',
+      id,
       text,
       title,
       select,
