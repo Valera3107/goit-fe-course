@@ -23,13 +23,13 @@ describe('Model class', ()=> {
   it('Find item by id', () => {
     const model = new Model();
 
-    model.addItem('1','1','rfrf', 'r4r4');
-    expect(model.findItem('1').toEqual({id: '1', select: '1', text: 'rfrf', title:'r4r4'}));
+    model.addItem('1','1','Napoleonion', 'Some text....');
+    expect(model.findItem('1')).toEqual({id: '1', select: '1', text: 'Napoleonion', title:'Some text....'});
   })
 
   it('Update item', ()=>{
     const model = new Model();
     model.addItem('1', "Napoleonion",'Some text....', '1');
-    expect(model.updateItem({id:'1', text:'KFC', title: 'fastfood', select: '1'}).toEqual({id:'1', text:'KFC', title: 'fastfood', select: '1'}));
+    expect(model.updateItem({id:'1', text:'KFC', title: 'fastfood', select: '1'})).toEqual({id:'1', text:'KFC', title: 'fastfood', select: '1'});
   })
 })
