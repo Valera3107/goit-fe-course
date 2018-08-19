@@ -26,7 +26,9 @@ export default class Model {
   }
 
   setSelectedItemId(id) {
+    if(id === null) return undefined;
     this.selectedItemId = id;
+    return this.selectedItemId;
   }
 
   getSelectedItemId() {
@@ -63,5 +65,6 @@ export default class Model {
     this.items = this.items.filter(item => item.id !== id);
     storage.clear();
     storage.set(this.items);
+    return this.items;
   }
 }
